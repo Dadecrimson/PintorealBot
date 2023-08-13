@@ -118,7 +118,6 @@ async def start(update:Update, context: ContextTypes.DEFAULT_TYPE) -> str :
           InlineKeyboardButton("فهرست پکیج ",callback_data=str(SHOW_PACKAGES))
         ],
         [
-          InlineKeyboardButton("درباره ما",callback_data=str(ABOUT_US)),
           InlineKeyboardButton("پشتیبانی",url="https://t.me/DadeCrimson"),
           InlineKeyboardButton("پشتیبانی ۲",url="https://t.me/pintoreal"),
           InlineKeyboardButton("خروج", callback_data=str(END))
@@ -155,7 +154,6 @@ async def start_over(update:Update, context: ContextTypes.DEFAULT_TYPE) -> str :
         InlineKeyboardButton("فهرست پکیج ",callback_data=str(SHOW_PACKAGES))
       ],
       [
-        InlineKeyboardButton("درباره ما",callback_data=str(ABOUT_US)),
         InlineKeyboardButton("پشتیبانی",url="https://t.me/DadeCrimson"),
         InlineKeyboardButton("پشتیبانی ۲",url="https://t.me/pintoreal"),
         InlineKeyboardButton("خروج", callback_data=str(END))
@@ -213,7 +211,7 @@ _ابرو ، مژه و بافت پوست
 با بافتها و تنهاژ های پوست آشنا میشید، ترکیب و تشخیص رنگ رو یاد میگیرید
 ینی هر چیزی که برای استارت نقاشی لازمه توی این ترم هست✨
 
-قیمت : 540 تومن
+قیمت : 540,000 تومان
   
   '''
   
@@ -256,7 +254,7 @@ async def term_2_home(update:Update , context:ContextTypes.DEFAULT_TYPE) -> str 
 
 ...
 
-قیمت :600تومن🔥😱
+قیمت :600,000تومان🔥😱
   '''
   
   await update.callback_query.answer()
@@ -309,7 +307,7 @@ async def term_3_home(update:Update , context: ContextTypes.DEFAULT_TYPE) -> str
 این ترم شامل نه جلسه است که تا جلسه ششم تکمیله و سه جلسه آخر در حال تکمیله🍓
 
 
-قیمت : 750تومن
+قیمت : 750,000تومان
   
   '''
   query = update.callback_query
@@ -340,7 +338,7 @@ async def cheshm_3rokh(update:Update,context : ContextTypes.DEFAULT_TYPE) -> str
 
 زمان آموزش :3:00 (3 ساعت) 
 
-هزینه پکیج : 🔥 200 تومن 🔥
+هزینه پکیج : 🔥 220,000 تومان 🔥
 '''
 
   query = update.callback_query
@@ -367,7 +365,7 @@ async def bini(update:Update,context : ContextTypes.DEFAULT_TYPE) -> str:
 
 زمان آموزش : یک ساعت و نیم
 
-هزینه آموزش:  🔥 125 تومن 🔥
+هزینه آموزش:  🔥 225,000 تومن 🔥
 '''
 
   query = update.callback_query
@@ -392,7 +390,7 @@ async def bini_3rokh(update:Update,context : ContextTypes.DEFAULT_TYPE) -> str:
 
 زمان آموزش:1:20 (یک ساعت و 20دقیقه)
  
-هزینه آموزش: 🔥 120 تومن 🔥
+هزینه آموزش: 🔥 220,000 تومان 🔥
 '''
 
   query = update.callback_query
@@ -424,7 +422,7 @@ async def bini_pir(update:Update,context : ContextTypes.DEFAULT_TYPE) -> str:
 
 
 زمان:5 ساعت 
-قیمت : 250 تومن
+قیمت : 250,000 تومان
   
   '''
   query = update.callback_query
@@ -454,7 +452,7 @@ async def lab(update:Update,context : ContextTypes.DEFAULT_TYPE) -> str:
 
 
 زمان:دو ساعت و چهل و پنج دقیقه 🕐
-قیمت:200تومن🔥
+قیمت:200,000 تومان🔥
   '''
 
   query = update.callback_query
@@ -484,7 +482,7 @@ async def lab_almasi(update:Update,context : ContextTypes.DEFAULT_TYPE) -> str:
 این مدل ترکیبی از کلی مباث مختلفه،الماس ،رژ لب،دندون ...هر کدوم از اینا میتونه یه جلسه مجزا باشه اما فکرشو بکن همه رو تو یه جلسه یاد میگیری😍🍓🪽
 
 زمان آموزش : 5ساعت و 10دقیقه
-قیمت : 250 تومن
+قیمت : 250,000 تومان
 '''
   query = update.callback_query
   await query.answer()
@@ -518,7 +516,7 @@ async def lab_asali(update:Update,context : ContextTypes.DEFAULT_TYPE) -> str:
 
 
 زمان : 4ساعت 34 دقیقه
-قیمت :  220 تومن  
+قیمت :  220,000 تومان  
   '''
   query = update.callback_query
   await query.answer()
@@ -549,7 +547,7 @@ async def tonazh_moo_ghahvei(update:Update,context : ContextTypes.DEFAULT_TYPE) 
 199.263.283.189.187.103
 
 زمان:دو ساعت 
-قیمت:100تومن🔥
+قیمت:200,000 تومان🔥
   '''
   query = update.callback_query
   await query.answer()
@@ -582,7 +580,7 @@ async def tonazh_moo_siah(update:Update,context : ContextTypes.DEFAULT_TYPE) -> 
 273.199.101.247(p)or347(c)
 
 زمان : ۱ ساعت
-قیمت : ۱۰۰ تومان🔥
+قیمت : 200,000 تومان🔥
   
 
   '''
@@ -614,7 +612,7 @@ async def moo_taylor(update:Update,context : ContextTypes.DEFAULT_TYPE) -> str:
 
 
 زمان:3ساعت و چهل دقیقه 
-قیمت :340 تومن
+قیمت :340,000 تومان
   '''
 
   query = update.callback_query
@@ -645,7 +643,7 @@ async def moo_shinion(update:Update,context : ContextTypes.DEFAULT_TYPE) -> str:
 یکی از پر طرفدار ترین آموزش ها مدل موی شینیون شده است که یاد میگیری چطوری پیچ و تاب های مو رو ایجاد کنی و یه مبحث تخصصی به حساب میاد .👀
 
 زمان: 3ساعت
-قیمت :380 تومن🔥
+قیمت :380,000 تومان🔥
   '''
 
   query = update.callback_query
@@ -674,7 +672,7 @@ async def moo_pesar(update:Update,context : ContextTypes.DEFAULT_TYPE) -> str:
 
 
 زمان:دو ساعت و سی و هشت
-قیمت:360 تومن🔥
+قیمت:360,000 تومان🔥
   '''
 
   query = update.callback_query
@@ -706,6 +704,9 @@ async def starter_home(update:Update, context: ContextTypes.DEFAULT_TYPE) -> str
 10.دید جزئی نگر 
 11.روش های طراحی اولیه 
 12.روش های انتقال طرح
+
+
+قیمت : 890,000 تومان
   '''
   
   query = update.callback_query
@@ -738,6 +739,8 @@ async def pishrafte_home(update:Update, context: ContextTypes.DEFAULT_TYPE) -> s
 
 تک تک مدلها با دقتُ وسواس انتخاب شدن تا همه نوع پوستی رو بعد از گذروندن این دوره بتونی به راحتی نقاشی کنی😍🍓✨
   
+
+قیمت : 1,690,000 تومان
   '''
   
   query = update.callback_query
@@ -804,6 +807,8 @@ async def sefr_ta_sad_home(update : Update ,context : ContextTypes.DEFAULT_TYPE)
 هم میتونی ترم به ترم ثبت نام کنی هم یکجا
 حتی بعضی از جلسات رو تکی هم میتونی ثبت نام کنی 😍🌱
 
+
+قیمت : 1,890,000 تومان
   '''
   text_t1 = '''
   🔥ترم اول🔥
@@ -817,6 +822,9 @@ async def sefr_ta_sad_home(update : Update ,context : ContextTypes.DEFAULT_TYPE)
 یکی از آیتم های این ترم( چشم سه رخ ) رو به صورت تک جلسه هم میتونید تهیه کنید🥰🍓
 برای ثبت نام 👇🏻
 
+
+قیمت : ,540,000 تومان
+
   '''
   text_t2 = '''
   🔥ترم دوم🔥
@@ -828,6 +836,8 @@ async def sefr_ta_sad_home(update : Update ,context : ContextTypes.DEFAULT_TYPE)
 
 ترم دوم رو هم میتونی یکجا و هم به صورت تک جلسه ای ثبت نام کنی 🌱✨
   
+
+قیمت : ,600,000 تومان
   '''
   text_t3='''
   💥ترم سوم 💥
@@ -838,6 +848,8 @@ async def sefr_ta_sad_home(update : Update ,context : ContextTypes.DEFAULT_TYPE)
 
 ترم سوم رو هم میتونی یکجا و هم به صورت تک جلسه ای ثبت نام کنی 🌱✨
   
+  
+قیمت : ,750,000 تومان
   '''
   
   query = update.callback_query
@@ -853,7 +865,7 @@ async def sefr_ta_sad_home(update : Update ,context : ContextTypes.DEFAULT_TYPE)
 async def tak_chehre_home(update : Update ,context : ContextTypes.DEFAULT_TYPE) -> str :
   keyboard = [
     [InlineKeyboardButton("ثبت نام پکیج تک چهره",callback_data=str(BUY_TAK_CHEHRE))],
-    [InlineKeyboardButton("بازگشت",callback_data=str(SHOW_PACKAGES))]
+    [InlineKeyboardButton("بازگشت",callback_data=str(BACK))]
     
   ]
   caption = '''
@@ -867,7 +879,9 @@ async def tak_chehre_home(update : Update ,context : ContextTypes.DEFAULT_TYPE) 
 تایم کلاساهم کاملا دست خودتونه چون فیلمهای اموزشی به صورت یکجا در اختیارتون قرار میگیره.
 
 🔥تخفیف ویژه پکیج تکچهره 🔥
-قیمت اصلی پکیج 980تومن + 30%تخفیف 👈🏻680تومن'''
+
+قیمت : ,980,000 تومان
+'''
   reply_markup = InlineKeyboardMarkup(keyboard)
   text = "متن صفحه اصلی پکیج تک جهره"
   query = update.callback_query
@@ -896,6 +910,7 @@ async def poost_package_home(update : Update ,context : ContextTypes.DEFAULT_TYP
 اگه قبلا نقاشی چهره کار کردی و میخوای که کارات بافت هایپررئال تری داشته باشه 
 این دوره مخصوصِ خودته✨🪄
  
+قیمت : ,2,580,000 تومان
  '''
  query = update.callback_query
  await query.answer()
@@ -1385,7 +1400,7 @@ async def forward_to_admin(update : Update , context : ContextTypes.DEFAULT_TYPE
   
   ACCEPT = str(f"accept {user_id} {package}")
   keyboard = [
-    [InlineKeyboardButton("accept",callback_data= ACCEPT)]
+    [InlineKeyboardButton("تایید فیش",callback_data= ACCEPT)]
   ]  
   
   reply_markup = InlineKeyboardMarkup(keyboard)
@@ -1530,11 +1545,11 @@ async def button_callback(update:Update,context:ContextTypes.DEFAULT_TYPE) -> st
     
   reply_markup = InlineKeyboardMarkup(keyboard)
   if data[0] == "accept":
-    await query.answer("accepted")
-    await bot.send_message(chat_id=user_id,text="accepted",reply_markup=reply_markup)
+    await query.answer("خرید پذیرفته شد")
+    await bot.send_message(chat_id=user_id,text="فیش ارسالی شما با موفقیت توسط ادمین تأیید شد و لینک های گروه ها به صورت خودکار برای شما ارسال خواهد شد\nممنون از اعتماد و خرید شما.",reply_markup=reply_markup)
     return SHOW_LINKS
   else :
-    await bot.send_message(chat_id=user_id,text="rejected") 
+    await bot.send_message(chat_id=user_id,text="فیش ارسالی شما توسط ادمین تأیید نشد.لطفا با ارسال /start و تماس با پشتیبانی اطلاعات لازم را دریافت کنید") 
   
 
 async def back_lo_list(update:Update , context : ContextTypes.DEFAULT_TYPE) -> str :
@@ -1676,7 +1691,7 @@ def main() -> None:
                                                  states={
                                                    SELECTION : [
                                                      CallbackQueryHandler(buy_tak_chehre,pattern="^" + str(BUY_TAK_CHEHRE) + "$"),
-                                                     CallbackQueryHandler(back_to_show_packages,pattern="^" + str(SHOW_PACKAGES) + "$"),
+                                                     CallbackQueryHandler(back_to_show_packages,pattern="^" + str(BACK) + "$"),
                                                    ],
                                                    FORWARD_TO_ADMIN : [MessageHandler(filters=filters.PHOTO ,callback= forward_to_admin),
                                                                        MessageHandler(filters=filters.TEXT,callback=code_takhfif),
@@ -1718,7 +1733,6 @@ def main() -> None:
                                             fallbacks=[CommandHandler("start",start)],
                                             allow_reentry= True,
                                             map_to_parent={
-                                              SHOW_PACKAGES : SELECT_PACKAGE,
                                               FORWARD_TO_ADMIN:FORWARD_TO_ADMIN,
                                               STOP : STOP
                                             },
@@ -1741,7 +1755,7 @@ def main() -> None:
               ],
               FORWARD_TO_ADMIN : [MessageHandler(filters=filters.PHOTO ,callback= forward_to_admin),
                                   MessageHandler(filters=filters.TEXT,callback=code_takhfif),
-                                  CallbackQueryHandler(poost_package_home,pattern="^"+str(BACK) + "$")],
+                                  CallbackQueryHandler(start,pattern="^"+str(BACK) + "$")],
               STOP : [CommandHandler("start",start)],
               SHOW_LINKS : [
                 CallbackQueryHandler(button_callback),
