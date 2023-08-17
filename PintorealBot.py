@@ -3,9 +3,9 @@ from telegram import InlineKeyboardButton,InlineKeyboardMarkup , KeyboardButton 
 from telegram.ext import PicklePersistence,Application,CallbackQueryHandler,CommandHandler,MessageHandler,ContextTypes, ConversationHandler,CallbackContext, filters
 import re
 
-os.environ['HTTP_PROXY'] = '127.0.0.1:9119'
-os.environ['HTTPS_PROXY'] = '127.0.0.1:9119'
-os.environ['SOCKS_PROXY'] = '127.0.0.1:9150'
+# os.environ['HTTP_PROXY'] = '127.0.0.1:9119'
+# os.environ['HTTPS_PROXY'] = '127.0.0.1:9119'
+# os.environ['SOCKS_PROXY'] = '127.0.0.1:9150'
 token = "6217084586:AAEwIqqQjfSyKlxxmTGUSWrCoJyhV7q_wko"
 bot = telegram.Bot(token=token)
 
@@ -128,11 +128,11 @@ async def start(update:Update, context: ContextTypes.DEFAULT_TYPE) -> str :
     سلام هنرجوی عزیز✨ 
 خیلی خوش حالیم که تیم آموزشی ما رو انتخاب کردی 😍🌱
  
-🔸از بخش فهرست پکیج میتونی لیست دوره                   هامونو ببینی✨  
+🔸از بخش فهرست پکیج میتونی لیست دوره هامونو ببینی✨  
 
 🔸برای ثبت نام و اطلاعات راجع به هر دوره روی اسمش کلیک کن و مراحل ثبت نام رو دنبال کن✨
 
-🔸اگر مشکلی در اجرای ربات پیدا کردی میتونی با نوشتن /start ربات رو دوباره اجرا کنی
+🔸اگر مشکلی در اجرای ربات پیدا کردی و یا دکمه ای رو زدی کار نکرد میتونی دکمه ***** برگشت ***** رو بزنی و یا با نوشتن /start ربات رو دوباره اجرا کنی
 
 🔸برای ارتباط با ادمین ها هم میتونی از  طریق دکمه های پشتیبانی اقدام کنی🍓
 """
@@ -169,7 +169,7 @@ async def start_over(update:Update, context: ContextTypes.DEFAULT_TYPE) -> str :
 
 🔸برای ثبت نام و اطلاعات راجع به هر دوره روی اسمش کلیک کن و مراحل ثبت نام رو دنبال کن✨
 
-🔸اگر مشکلی در اجرای ربات پیدا کردی میتونی با نوشتن /start ربات رو دوباره اجرا کنی
+🔸اگر مشکلی در اجرای ربات پیدا کردی و یا دکمه ای رو زدی کار نکرد میتونی دکمه ***** برگشت ***** رو بزنی و یا با نوشتن /start ربات رو دوباره اجرا کنی
 
 🔸برای ارتباط با ادمین ها هم میتونی از  طریق دکمه های پشتیبانی اقدام کنی🍓
   """   
@@ -931,6 +931,7 @@ async def buy_sefr_ta_sad(update : Update , context : ContextTypes.DEFAULT_TYPE)
   برای خرید پکیج  » {context.user_data[PACKAGE]}
 لطفا مبلغ » {context.user_data[PRICE]} 
 به شماره کارت ارسال شده به نام سرکار خانم مریم باقری  واریز نمایید.🙏🙏🙏
+اگر کد تخفیف دارید آن را به صورت حروف بزرگ ارسال کنید و با قیمت تخفیف خورده خریداری کنید.
 
 پس از واریز , فیش واریزی خود را در همین قسمت بفرستید تا برای ادمین ارسال شود.
 پس از تأیید فیش شما توسط ادمین لینک گروه ها به صورت خودکار برای شما ارسال خواهد شد.
@@ -953,6 +954,7 @@ async def buy_tak_chehre(update : Update , context : ContextTypes.DEFAULT_TYPE) 
   برای خرید پکیج  » {context.user_data[PACKAGE]}
 لطفا مبلغ » {context.user_data[PRICE]} 
 به شماره کارت ارسال شده به نام سرکار خانم مریم باقری  واریز نمایید.🙏🙏🙏
+اگر کد تخفیف دارید آن را به صورت حروف بزرگ ارسال کنید و با قیمت تخفیف خورده خریداری کنید.
 
 پس از واریز , فیش واریزی خود را در همین قسمت بفرستید تا برای ادمین ارسال شود.
 پس از تأیید فیش شما توسط ادمین لینک گروه ها به صورت خودکار برای شما ارسال خواهد شد.
@@ -975,6 +977,7 @@ async def buy_poost(update : Update , context : ContextTypes.DEFAULT_TYPE) -> st
   برای خرید پکیج  » {context.user_data[PACKAGE]}
 لطفا مبلغ » {context.user_data[PRICE]} 
 به شماره کارت ارسال شده به نام سرکار خانم مریم باقری  واریز نمایید.🙏🙏🙏
+اگر کد تخفیف دارید آن را به صورت حروف بزرگ ارسال کنید و با قیمت تخفیف خورده خریداری کنید.
 
 پس از واریز , فیش واریزی خود را در همین قسمت بفرستید تا برای ادمین ارسال شود.
 پس از تأیید فیش شما توسط ادمین لینک گروه ها به صورت خودکار برای شما ارسال خواهد شد.
@@ -998,6 +1001,7 @@ async def buy_starter(update : Update , context : ContextTypes.DEFAULT_TYPE) -> 
   برای خرید پکیج  » {context.user_data[PACKAGE]}
 لطفا مبلغ » {context.user_data[PRICE]} 
 به شماره کارت ارسال شده به نام سرکار خانم مریم باقری  واریز نمایید.🙏🙏🙏
+اگر کد تخفیف دارید آن را به صورت حروف بزرگ ارسال کنید و با قیمت تخفیف خورده خریداری کنید.
 
 پس از واریز , فیش واریزی خود را در همین قسمت بفرستید تا برای ادمین ارسال شود.
 پس از تأیید فیش شما توسط ادمین لینک گروه ها به صورت خودکار برای شما ارسال خواهد شد.
@@ -1020,6 +1024,7 @@ async def buy_pishrafte(update : Update , context : ContextTypes.DEFAULT_TYPE) -
   برای خرید پکیج  » {context.user_data[PACKAGE]}
 لطفا مبلغ » {context.user_data[PRICE]} 
 به شماره کارت ارسال شده به نام سرکار خانم مریم باقری  واریز نمایید.🙏🙏🙏
+اگر کد تخفیف دارید آن را به صورت حروف بزرگ ارسال کنید و با قیمت تخفیف خورده خریداری کنید.
 
 پس از واریز , فیش واریزی خود را در همین قسمت بفرستید تا برای ادمین ارسال شود.
 پس از تأیید فیش شما توسط ادمین لینک گروه ها به صورت خودکار برای شما ارسال خواهد شد.
@@ -1047,6 +1052,7 @@ async def buy_term_2(update : Update , context : ContextTypes.DEFAULT_TYPE) -> s
   برای خرید پکیج  » {context.user_data[PACKAGE]}
 لطفا مبلغ » {context.user_data[PRICE]} 
 به شماره کارت ارسال شده به نام سرکار خانم مریم باقری  واریز نمایید.🙏🙏🙏
+اگر کد تخفیف دارید آن را به صورت حروف بزرگ ارسال کنید و با قیمت تخفیف خورده خریداری کنید.
 
 پس از واریز , فیش واریزی خود را در همین قسمت بفرستید تا برای ادمین ارسال شود.
 پس از تأیید فیش شما توسط ادمین لینک گروه ها به صورت خودکار برای شما ارسال خواهد شد.
@@ -1069,6 +1075,7 @@ async def buy_term_1(update : Update , context : ContextTypes.DEFAULT_TYPE) -> s
   برای خرید پکیج  » {context.user_data[PACKAGE]}
 لطفا مبلغ » {context.user_data[PRICE]} 
 به شماره کارت ارسال شده به نام سرکار خانم مریم باقری  واریز نمایید.🙏🙏🙏
+اگر کد تخفیف دارید آن را به صورت حروف بزرگ ارسال کنید و با قیمت تخفیف خورده خریداری کنید.
 
 پس از واریز , فیش واریزی خود را در همین قسمت بفرستید تا برای ادمین ارسال شود.
 پس از تأیید فیش شما توسط ادمین لینک گروه ها به صورت خودکار برای شما ارسال خواهد شد.
@@ -1091,6 +1098,7 @@ async def buy_term_3(update : Update , context : ContextTypes.DEFAULT_TYPE) -> s
   برای خرید پکیج  » {context.user_data[PACKAGE]}
 لطفا مبلغ » {context.user_data[PRICE]} 
 به شماره کارت ارسال شده به نام سرکار خانم مریم باقری  واریز نمایید.🙏🙏🙏
+اگر کد تخفیف دارید آن را به صورت حروف بزرگ ارسال کنید و با قیمت تخفیف خورده خریداری کنید.
 
 پس از واریز , فیش واریزی خود را در همین قسمت بفرستید تا برای ادمین ارسال شود.
 پس از تأیید فیش شما توسط ادمین لینک گروه ها به صورت خودکار برای شما ارسال خواهد شد.
@@ -1114,6 +1122,7 @@ async def buy_cheshm_3rokh(update : Update , context : ContextTypes.DEFAULT_TYPE
   برای خرید پکیج  » {context.user_data[PACKAGE]}
 لطفا مبلغ » {context.user_data[PRICE]} 
 به شماره کارت ارسال شده به نام سرکار خانم مریم باقری  واریز نمایید.🙏🙏🙏
+اگر کد تخفیف دارید آن را به صورت حروف بزرگ ارسال کنید و با قیمت تخفیف خورده خریداری کنید.
 
 پس از واریز , فیش واریزی خود را در همین قسمت بفرستید تا برای ادمین ارسال شود.
 پس از تأیید فیش شما توسط ادمین لینک گروه ها به صورت خودکار برای شما ارسال خواهد شد.
@@ -1137,6 +1146,7 @@ async def buy_bini(update : Update , context : ContextTypes.DEFAULT_TYPE) -> str
   برای خرید پکیج  » {context.user_data[PACKAGE]}
 لطفا مبلغ » {context.user_data[PRICE]} 
 به شماره کارت ارسال شده به نام سرکار خانم مریم باقری  واریز نمایید.🙏🙏🙏
+اگر کد تخفیف دارید آن را به صورت حروف بزرگ ارسال کنید و با قیمت تخفیف خورده خریداری کنید.
 
 پس از واریز , فیش واریزی خود را در همین قسمت بفرستید تا برای ادمین ارسال شود.
 پس از تأیید فیش شما توسط ادمین لینک گروه ها به صورت خودکار برای شما ارسال خواهد شد.
@@ -1159,6 +1169,7 @@ async def buy_bini_pir(update : Update , context : ContextTypes.DEFAULT_TYPE) ->
   برای خرید پکیج  » {context.user_data[PACKAGE]}
 لطفا مبلغ » {context.user_data[PRICE]} 
 به شماره کارت ارسال شده به نام سرکار خانم مریم باقری  واریز نمایید.🙏🙏🙏
+اگر کد تخفیف دارید آن را به صورت حروف بزرگ ارسال کنید و با قیمت تخفیف خورده خریداری کنید.
 
 پس از واریز , فیش واریزی خود را در همین قسمت بفرستید تا برای ادمین ارسال شود.
 پس از تأیید فیش شما توسط ادمین لینک گروه ها به صورت خودکار برای شما ارسال خواهد شد.
@@ -1181,6 +1192,7 @@ async def buy_bini_3rokh(update : Update , context : ContextTypes.DEFAULT_TYPE) 
   برای خرید پکیج  » {context.user_data[PACKAGE]}
 لطفا مبلغ » {context.user_data[PRICE]} 
 به شماره کارت ارسال شده به نام سرکار خانم مریم باقری  واریز نمایید.🙏🙏🙏
+اگر کد تخفیف دارید آن را به صورت حروف بزرگ ارسال کنید و با قیمت تخفیف خورده خریداری کنید.
 
 پس از واریز , فیش واریزی خود را در همین قسمت بفرستید تا برای ادمین ارسال شود.
 پس از تأیید فیش شما توسط ادمین لینک گروه ها به صورت خودکار برای شما ارسال خواهد شد.
@@ -1204,6 +1216,7 @@ async def buy_lab(update : Update , context : ContextTypes.DEFAULT_TYPE) -> str:
   برای خرید پکیج  » {context.user_data[PACKAGE]}
 لطفا مبلغ » {context.user_data[PRICE]} 
 به شماره کارت ارسال شده به نام سرکار خانم مریم باقری  واریز نمایید.🙏🙏🙏
+اگر کد تخفیف دارید آن را به صورت حروف بزرگ ارسال کنید و با قیمت تخفیف خورده خریداری کنید.
 
 پس از واریز , فیش واریزی خود را در همین قسمت بفرستید تا برای ادمین ارسال شود.
 پس از تأیید فیش شما توسط ادمین لینک گروه ها به صورت خودکار برای شما ارسال خواهد شد.
@@ -1226,6 +1239,7 @@ async def buy_lab_almasi(update : Update , context : ContextTypes.DEFAULT_TYPE) 
   برای خرید پکیج  » {context.user_data[PACKAGE]}
 لطفا مبلغ » {context.user_data[PRICE]} 
 به شماره کارت ارسال شده به نام سرکار خانم مریم باقری  واریز نمایید.🙏🙏🙏
+اگر کد تخفیف دارید آن را به صورت حروف بزرگ ارسال کنید و با قیمت تخفیف خورده خریداری کنید.
 
 پس از واریز , فیش واریزی خود را در همین قسمت بفرستید تا برای ادمین ارسال شود.
 پس از تأیید فیش شما توسط ادمین لینک گروه ها به صورت خودکار برای شما ارسال خواهد شد.
@@ -1249,6 +1263,7 @@ async def buy_lab_asali(update : Update , context : ContextTypes.DEFAULT_TYPE) -
   برای خرید پکیج  » {context.user_data[PACKAGE]}
 لطفا مبلغ » {context.user_data[PRICE]} 
 به شماره کارت ارسال شده به نام سرکار خانم مریم باقری  واریز نمایید.🙏🙏🙏
+اگر کد تخفیف دارید آن را به صورت حروف بزرگ ارسال کنید و با قیمت تخفیف خورده خریداری کنید.
 
 پس از واریز , فیش واریزی خود را در همین قسمت بفرستید تا برای ادمین ارسال شود.
 پس از تأیید فیش شما توسط ادمین لینک گروه ها به صورت خودکار برای شما ارسال خواهد شد.
@@ -1272,6 +1287,7 @@ async def buy_tonazh_moo_ghahvei(update : Update , context : ContextTypes.DEFAUL
   برای خرید پکیج  » {context.user_data[PACKAGE]}
 لطفا مبلغ » {context.user_data[PRICE]} 
 به شماره کارت ارسال شده به نام سرکار خانم مریم باقری  واریز نمایید.🙏🙏🙏
+اگر کد تخفیف دارید آن را به صورت حروف بزرگ ارسال کنید و با قیمت تخفیف خورده خریداری کنید.
 
 پس از واریز , فیش واریزی خود را در همین قسمت بفرستید تا برای ادمین ارسال شود.
 پس از تأیید فیش شما توسط ادمین لینک گروه ها به صورت خودکار برای شما ارسال خواهد شد.
@@ -1294,6 +1310,7 @@ async def buy_tonazh_moo_siah(update : Update , context : ContextTypes.DEFAULT_T
   برای خرید پکیج  » {context.user_data[PACKAGE]}
 لطفا مبلغ » {context.user_data[PRICE]} 
 به شماره کارت ارسال شده به نام سرکار خانم مریم باقری  واریز نمایید.🙏🙏🙏
+اگر کد تخفیف دارید آن را به صورت حروف بزرگ ارسال کنید و با قیمت تخفیف خورده خریداری کنید.
 
 پس از واریز , فیش واریزی خود را در همین قسمت بفرستید تا برای ادمین ارسال شود.
 پس از تأیید فیش شما توسط ادمین لینک گروه ها به صورت خودکار برای شما ارسال خواهد شد.
@@ -1316,6 +1333,7 @@ async def buy_moo_taylor(update : Update , context : ContextTypes.DEFAULT_TYPE) 
   برای خرید پکیج  » {context.user_data[PACKAGE]}
 لطفا مبلغ » {context.user_data[PRICE]} 
 به شماره کارت ارسال شده به نام سرکار خانم مریم باقری  واریز نمایید.🙏🙏🙏
+اگر کد تخفیف دارید آن را به صورت حروف بزرگ ارسال کنید و با قیمت تخفیف خورده خریداری کنید.
 
 پس از واریز , فیش واریزی خود را در همین قسمت بفرستید تا برای ادمین ارسال شود.
 پس از تأیید فیش شما توسط ادمین لینک گروه ها به صورت خودکار برای شما ارسال خواهد شد.
@@ -1337,6 +1355,7 @@ async def buy_moo_shinion(update : Update , context : ContextTypes.DEFAULT_TYPE)
   برای خرید پکیج  » {context.user_data[PACKAGE]}
 لطفا مبلغ » {context.user_data[PRICE]} 
 به شماره کارت ارسال شده به نام سرکار خانم مریم باقری  واریز نمایید.🙏🙏🙏
+اگر کد تخفیف دارید آن را به صورت حروف بزرگ ارسال کنید و با قیمت تخفیف خورده خریداری کنید.
 
 اگر کد تخفیف دارید میتوانید با ارسال کد از تخفیف بهره مند شوید.
 
@@ -1364,6 +1383,7 @@ async def buy_moo_pesar(update : Update , context : ContextTypes.DEFAULT_TYPE) -
   برای خرید پکیج  » {context.user_data[PACKAGE]}
 لطفا مبلغ » {context.user_data[PRICE]} 
 به شماره کارت ارسال شده به نام سرکار خانم مریم باقری  واریز نمایید.🙏🙏🙏
+اگر کد تخفیف دارید آن را به صورت حروف بزرگ ارسال کنید و با قیمت تخفیف خورده خریداری کنید.
 
 پس از واریز , فیش واریزی خود را در همین قسمت بفرستید تا برای ادمین ارسال شود.
 پس از تأیید فیش شما توسط ادمین لینک گروه ها به صورت خودکار برای شما ارسال خواهد شد.
@@ -1425,10 +1445,9 @@ async def code_takhfif(update:Update,context:ContextTypes.DEFAULT_TYPE) -> str :
   message = update.message.text
   print(message)
 
-  for i in codes:
-    if message == i :
-      price_t = context.user_data[PRICE_T]
-      text = f'''
+  if message == "PNT001" or message == "PNT002" or message == "PNT003" :
+    price_t = context.user_data[PRICE_T]
+    text = f'''
   برای خرید پکیج  » {context.user_data[PACKAGE]}
 لطفا مبلغ » {context.user_data[PRICE_T]} 
 به شماره کارت ارسال شده به نام سرکار خانم مریم باقری  واریز نمایید.🙏🙏🙏
@@ -1439,11 +1458,11 @@ async def code_takhfif(update:Update,context:ContextTypes.DEFAULT_TYPE) -> str :
 
 از صبر و شکیبایی شما ممنونیم.🧡💛
   '''
-      await update.message.reply_text(text=text)
-      return FORWARD_TO_ADMIN
-    else:
-      text = "کد تفیف ارسالی مورد تأیید نمیباشد"
-      await update.message.reply_text(text=text)
+    await update.message.reply_text(text=text)
+    return FORWARD_TO_ADMIN
+  else:
+    text = "کد تفیف ارسالی مورد تأیید نمیباشد"
+    await update.message.reply_text(text=text)
   return FORWARD_TO_ADMIN
   
   
@@ -1457,7 +1476,7 @@ async def button_callback(update:Update,context:ContextTypes.DEFAULT_TYPE) -> st
   if package == "tak_chehre":
     keyboard = [
       [InlineKeyboardButton("لینک گروه تک چهره",url="https://t.me/+zNjvj8YebyQ5MjU0")],
-      [InlineKeyboardButton("بارگشت",callback_data=str(BACK))]
+      [InlineKeyboardButton("بازگشت",callback_data=str(BACK))]
     ]
   elif package == "sefr_ta_sad":
     keyboard = [
@@ -1471,73 +1490,73 @@ async def button_callback(update:Update,context:ContextTypes.DEFAULT_TYPE) -> st
     keyboard = [
       [InlineKeyboardButton("لینک گروه آپدیت ترم اول ",url="https://t.me/+OML8kGGK_xUwOGFk")],
       [InlineKeyboardButton("لینک گروه ترم اول ",url="https://t.me/+RhELuOdUW200M2U0")],
-      [InlineKeyboardButton("بارگشت",callback_data=str(BACK))]
+      [InlineKeyboardButton("بازگشت",callback_data=str(BACK))]
     ]
   elif package == "term_2":
     keyboard = [
       [InlineKeyboardButton("لینک گروه ترم دوم ",url="https://t.me/+DMM_XeNZlxc1NzY0")],
-      [InlineKeyboardButton("بارگشت",callback_data=str(BACK))]
+      [InlineKeyboardButton("بازگشت",callback_data=str(BACK))]
     ]
   elif package == "term_3":
     keyboard = [
       [InlineKeyboardButton("لینک گروه ترم سوم ",url="https://t.me/+99h5iMpcQgc4ZjE0")],
-      [InlineKeyboardButton("بارگشت",callback_data=str(BACK))]
+      [InlineKeyboardButton("بازگشت",callback_data=str(BACK))]
     ]
   elif package == "cheshm_3rokh":
     keyboard = [
       [InlineKeyboardButton("لینک گروه جشم سه رخ ",url="https://t.me/+HdHDLoerKTZlNjg8")],
-      [InlineKeyboardButton("بارگشت",callback_data=str(BACK))]
+      [InlineKeyboardButton("بازگشت",callback_data=str(BACK))]
     ]
   elif package == "bini":
     keyboard = [
       [InlineKeyboardButton("لینک گروه بینی تمام رخ ",url="https://t.me/+eGoKoKWLsSUwYmE8")],
-      [InlineKeyboardButton("بارگشت",callback_data=str(BACK))]
+      [InlineKeyboardButton("بازگشت",callback_data=str(BACK))]
     ]
   elif package == "bini_3rokh":
     keyboard = [
       [InlineKeyboardButton("لینک گروه بینی سه رخ ",url="https://t.me/+kYwuy2X4Y185NDFk")],
-      [InlineKeyboardButton("بارگشت",callback_data=str(BACK))]
+      [InlineKeyboardButton("بازگشت",callback_data=str(BACK))]
     ]
   elif package == "bini_pir":
     keyboard = [
       [InlineKeyboardButton("لینک گروه بینی پیر ",url="https://t.me/+SGH5EQkExaliZDY0")],
-      [InlineKeyboardButton("بارگشت",callback_data=str(BACK))]
+      [InlineKeyboardButton("بازگشت",callback_data=str(BACK))]
     ]
   elif package == "lab_asali":
     keyboard = [
       [InlineKeyboardButton("لینک گروه لب عسلی ",url="https://t.me/+UupKG9E-kME2OTNk")],
-      [InlineKeyboardButton("بارگشت",callback_data=str(BACK))]
+      [InlineKeyboardButton("بازگشت",callback_data=str(BACK))]
     ]
   elif package == "lab_almasi":
     keyboard = [
       [InlineKeyboardButton("لینک گروه لب الماسی ",url="https://t.me/+Ih5LQ93iofw0YjU0")],
-      [InlineKeyboardButton("بارگشت",callback_data=str(BACK))]
+      [InlineKeyboardButton("بازگشت",callback_data=str(BACK))]
     ]
   elif package == "lab":
     keyboard = [
       [InlineKeyboardButton("لینک گروه لب خندان ",url="https://t.me/+SSzHyF-XdYYxMWRk")],
-      [InlineKeyboardButton("بارگشت",callback_data=str(BACK))]
+      [InlineKeyboardButton("بازگشت",callback_data=str(BACK))]
     ]
   elif package == "starter":
     keyboard = [
       [InlineKeyboardButton("لینک گروه استارتر",url="https://t.me/+fcvSvAxfGYA5ODk0")],
-      [InlineKeyboardButton("بارگشت",callback_data=str(BACK))]
+      [InlineKeyboardButton("بازگشت",callback_data=str(BACK))]
     ]
   elif package == "pishrafte":
     keyboard = [
       [InlineKeyboardButton("لینک گروه پیشرفته ",url="https://t.me/+IwMGEazEyVdlNjQ0")],
-      [InlineKeyboardButton("بارگشت",callback_data=str(BACK))]
+      [InlineKeyboardButton("بازگشت",callback_data=str(BACK))]
     ]
   elif package == "poost":
     keyboard = [
       [InlineKeyboardButton("لینک گروه استارتر",url="https://t.me/+fcvSvAxfGYA5ODk0")],
       [InlineKeyboardButton("لینک گروه پیشرفته ",url="https://t.me/+IwMGEazEyVdlNjQ0")],
-      [InlineKeyboardButton("بارگشت",callback_data=str(BACK))]
+      [InlineKeyboardButton("بازگشت",callback_data=str(BACK))]
     ]  
   else:
     keyboard = [
       [InlineKeyboardButton("لینک گروه ",url="")],
-      [InlineKeyboardButton("بارگشت",callback_data=str(BACK))]
+      [InlineKeyboardButton("بازگشت",callback_data=str(BACK))]
     ]
           
     
@@ -1546,7 +1565,7 @@ async def button_callback(update:Update,context:ContextTypes.DEFAULT_TYPE) -> st
   reply_markup = InlineKeyboardMarkup(keyboard)
   if data[0] == "accept":
     await query.answer("خرید پذیرفته شد")
-    await bot.send_message(chat_id=user_id,text="فیش ارسالی شما با موفقیت توسط ادمین تأیید شد و لینک های گروه ها به صورت خودکار برای شما ارسال خواهد شد\nممنون از اعتماد و خرید شما.",reply_markup=reply_markup)
+    await bot.send_message(chat_id=user_id,text="فیش ارسالی شما با موفقیت توسط ادمین تأیید شد و لینک های گروه ها به صورت خودکار برای شما ارسال خواهد شد\nممنون از اعتماد و خرید شما\nدر صورتی که میخواهید دوباره از ربات استفاده کنید کلمه /start را ارسال کنید.",reply_markup=reply_markup)
     return SHOW_LINKS
   else :
     await bot.send_message(chat_id=user_id,text="فیش ارسالی شما توسط ادمین تأیید نشد.لطفا با ارسال /start و تماس با پشتیبانی اطلاعات لازم را دریافت کنید") 
@@ -1611,9 +1630,8 @@ async def about_us(update:Update , context:ContextTypes.DEFAULT_TYPE)-> str :
  
   
 def main() -> None:
-  persistence = PicklePersistence(filepath="pintorealbot")
   
-  application = Application.builder().token(token).persistence(persistence).build() 
+  application = Application.builder().token(token).build() 
    
   #  buy functions left
   sefr_ta_sad_package_conv = ConversationHandler(entry_points=[CallbackQueryHandler(sefr_ta_sad_home, pattern= "^" + str(SEFR_TA_SAD) + "$")],
@@ -1674,6 +1692,9 @@ def main() -> None:
                                                                           CallbackQueryHandler(back_to_term_3,pattern="^" + str(BACK) + "$")], 
                                                            MOO_PESAR : [CallbackQueryHandler(buy_moo_pesar,pattern= "^" + str(BUY_MOO_PESAR) + "$"),
                                                                           CallbackQueryHandler(back_to_term_3,pattern="^" + str(BACK) + "$")], 
+                                                           SHOW_LINKS : [CallbackQueryHandler(button_callback),
+                                                                         CallbackQueryHandler(sefr_ta_sad_home,pattern="^" + str(BACK) + "$")]
+
                                                   },
                                                   
                                                   map_to_parent={
@@ -1682,8 +1703,6 @@ def main() -> None:
                                                     FORWARD_TO_ADMIN:FORWARD_TO_ADMIN,
                                                   },
                                                   fallbacks=[CommandHandler("start",start)],allow_reentry=True,
-                                                  persistent=True,
-                                                  name="tak chehre package conv"
                                                   )
 
    
@@ -1708,8 +1727,6 @@ def main() -> None:
                                                    FORWARD_TO_ADMIN: FORWARD_TO_ADMIN
                                                  },
                                                 allow_reentry= True,
-                                                persistent=True,
-                                                name= "tak chehre package conv"
                                                  )
    
    
@@ -1728,6 +1745,8 @@ def main() -> None:
                                               FORWARD_TO_ADMIN : [MessageHandler(filters=filters.PHOTO ,callback= forward_to_admin),
                                                                        MessageHandler(filters=filters.TEXT,callback=code_takhfif),
                                                                        CallbackQueryHandler(poost_package_home,pattern="^"+str(BACK) + "$")],
+                                              SHOW_LINKS : [CallbackQueryHandler(button_callback),
+                                                            CallbackQueryHandler(poost_package_home,pattern="^" + str(BACK) + "$")],
                                               
                                             },
                                             fallbacks=[CommandHandler("start",start)],
@@ -1736,13 +1755,11 @@ def main() -> None:
                                               FORWARD_TO_ADMIN:FORWARD_TO_ADMIN,
                                               STOP : STOP
                                             },
-                                            persistent=True,
-                                            name="poost package conv"
                                             )
    
   
   main_conv = ConversationHandler(
-     entry_points= [CommandHandler("start",start)],
+     entry_points= [CommandHandler("start",start),poost_package_conv,tak_chehre_package_conv,sefr_ta_sad_package_conv],
      states= {HOME: [CallbackQueryHandler(show_packages , pattern="^" + str(SHOW_PACKAGES) + "$"),
                      CallbackQueryHandler(about_us,pattern="^"+ str(ABOUT_US) + "$"),
                      CallbackQueryHandler(END,pattern="^" + str(END) + "$")
@@ -1755,24 +1772,25 @@ def main() -> None:
               ],
               FORWARD_TO_ADMIN : [MessageHandler(filters=filters.PHOTO ,callback= forward_to_admin),
                                   MessageHandler(filters=filters.TEXT,callback=code_takhfif),
-                                  CallbackQueryHandler(start,pattern="^"+str(BACK) + "$")],
+                                  CallbackQueryHandler(show_packages,pattern="^"+str(BACK) + "$")],
               STOP : [CommandHandler("start",start)],
               SHOW_LINKS : [
                 CallbackQueryHandler(button_callback),
-                CallbackQueryHandler(start,pattern="^" + str(BACK) + "$")
+                CallbackQueryHandler(show_packages,pattern="^" + str(BACK) + "$")
               ],
               
               
               },
      fallbacks=[CommandHandler("start", start)],
      allow_reentry=True,
-     persistent=True,
-     name= "main_conv"
     
     
    )
    
   application.add_handler(main_conv)
+  application.add_handler(CallbackQueryHandler(show_packages,pattern="^" + str(BACK) + "$"))
+  application.add_handler(CallbackQueryHandler(show_packages,pattern="^" + str(SHOW_PACKAGES) + "$"))
+
   application.run_polling()
   
   
