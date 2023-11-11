@@ -83,7 +83,8 @@ END = ConversationHandler.END
   ACCEPT,
   SHOW_LINKS,
   USER_ID,
-  ID,) = map(chr,range(0,24))
+  CODE,
+  ID,) = map(chr,range(0,25))
 
 
 # PAGES :
@@ -211,7 +212,7 @@ _ابرو ، مژه و بافت پوست
 با بافتها و تنهاژ های پوست آشنا میشید، ترکیب و تشخیص رنگ رو یاد میگیرید
 ینی هر چیزی که برای استارت نقاشی لازمه توی این ترم هست✨
 
-قیمت : 540,000 تومان
+قیمت : 430,000 تومان
   
   '''
   
@@ -254,7 +255,7 @@ async def term_2_home(update:Update , context:ContextTypes.DEFAULT_TYPE) -> str 
 
 ...
 
-قیمت :600,000تومان🔥😱
+قیمت :480,000تومان🔥😱
   '''
   
   await update.callback_query.answer()
@@ -307,7 +308,7 @@ async def term_3_home(update:Update , context: ContextTypes.DEFAULT_TYPE) -> str
 این ترم شامل نه جلسه است که تا جلسه ششم تکمیله و سه جلسه آخر در حال تکمیله🍓
 
 
-قیمت : 750,000تومان
+قیمت : 590,000تومان
   
   '''
   query = update.callback_query
@@ -338,7 +339,7 @@ async def cheshm_3rokh(update:Update,context : ContextTypes.DEFAULT_TYPE) -> str
 
 زمان آموزش :3:00 (3 ساعت) 
 
-هزینه پکیج : 🔥 220,000 تومان 🔥
+هزینه پکیج : 🔥 170,000 تومان 🔥
 '''
 
   query = update.callback_query
@@ -365,7 +366,7 @@ async def bini(update:Update,context : ContextTypes.DEFAULT_TYPE) -> str:
 
 زمان آموزش : یک ساعت و نیم
 
-هزینه آموزش:  🔥 225,000 تومن 🔥
+هزینه آموزش:  🔥 180,000 تومن 🔥
 '''
 
   query = update.callback_query
@@ -390,7 +391,7 @@ async def bini_3rokh(update:Update,context : ContextTypes.DEFAULT_TYPE) -> str:
 
 زمان آموزش:1:20 (یک ساعت و 20دقیقه)
  
-هزینه آموزش: 🔥 220,000 تومان 🔥
+هزینه آموزش: 🔥 170,000 تومان 🔥
 '''
 
   query = update.callback_query
@@ -422,7 +423,7 @@ async def bini_pir(update:Update,context : ContextTypes.DEFAULT_TYPE) -> str:
 
 
 زمان:5 ساعت 
-قیمت : 250,000 تومان
+قیمت : 200,000 تومان
   
   '''
   query = update.callback_query
@@ -452,7 +453,7 @@ async def lab(update:Update,context : ContextTypes.DEFAULT_TYPE) -> str:
 
 
 زمان:دو ساعت و چهل و پنج دقیقه 🕐
-قیمت:200,000 تومان🔥
+قیمت:150,000 تومان🔥
   '''
 
   query = update.callback_query
@@ -482,7 +483,7 @@ async def lab_almasi(update:Update,context : ContextTypes.DEFAULT_TYPE) -> str:
 این مدل ترکیبی از کلی مباث مختلفه،الماس ،رژ لب،دندون ...هر کدوم از اینا میتونه یه جلسه مجزا باشه اما فکرشو بکن همه رو تو یه جلسه یاد میگیری😍🍓🪽
 
 زمان آموزش : 5ساعت و 10دقیقه
-قیمت : 250,000 تومان
+قیمت : 200,000 تومان
 '''
   query = update.callback_query
   await query.answer()
@@ -516,7 +517,7 @@ async def lab_asali(update:Update,context : ContextTypes.DEFAULT_TYPE) -> str:
 
 
 زمان : 4ساعت 34 دقیقه
-قیمت :  220,000 تومان  
+قیمت :  170,000 تومان  
   '''
   query = update.callback_query
   await query.answer()
@@ -547,7 +548,7 @@ async def tonazh_moo_ghahvei(update:Update,context : ContextTypes.DEFAULT_TYPE) 
 199.263.283.189.187.103
 
 زمان:دو ساعت 
-قیمت:200,000 تومان🔥
+قیمت:150,000 تومان🔥
   '''
   query = update.callback_query
   await query.answer()
@@ -580,7 +581,7 @@ async def tonazh_moo_siah(update:Update,context : ContextTypes.DEFAULT_TYPE) -> 
 273.199.101.247(p)or347(c)
 
 زمان : ۱ ساعت
-قیمت : 200,000 تومان🔥
+قیمت : 150,000 تومان🔥
   
 
   '''
@@ -612,7 +613,7 @@ async def moo_taylor(update:Update,context : ContextTypes.DEFAULT_TYPE) -> str:
 
 
 زمان:3ساعت و چهل دقیقه 
-قیمت :340,000 تومان
+قیمت :290,000 تومان
   '''
 
   query = update.callback_query
@@ -643,7 +644,7 @@ async def moo_shinion(update:Update,context : ContextTypes.DEFAULT_TYPE) -> str:
 یکی از پر طرفدار ترین آموزش ها مدل موی شینیون شده است که یاد میگیری چطوری پیچ و تاب های مو رو ایجاد کنی و یه مبحث تخصصی به حساب میاد .👀
 
 زمان: 3ساعت
-قیمت :380,000 تومان🔥
+قیمت :330,000 تومان🔥
   '''
 
   query = update.callback_query
@@ -672,7 +673,7 @@ async def moo_pesar(update:Update,context : ContextTypes.DEFAULT_TYPE) -> str:
 
 
 زمان:دو ساعت و سی و هشت
-قیمت:360,000 تومان🔥
+قیمت:310,000 تومان🔥
   '''
 
   query = update.callback_query
@@ -706,7 +707,7 @@ async def starter_home(update:Update, context: ContextTypes.DEFAULT_TYPE) -> str
 12.روش های انتقال طرح
 
 
-قیمت : 890,000 تومان
+قیمت : 530,000 تومان
   '''
   
   query = update.callback_query
@@ -740,7 +741,7 @@ async def pishrafte_home(update:Update, context: ContextTypes.DEFAULT_TYPE) -> s
 تک تک مدلها با دقتُ وسواس انتخاب شدن تا همه نوع پوستی رو بعد از گذروندن این دوره بتونی به راحتی نقاشی کنی😍🍓✨
   
 
-قیمت : 1,690,000 تومان
+قیمت : ,920,000 تومان
   '''
   
   query = update.callback_query
@@ -808,7 +809,7 @@ async def sefr_ta_sad_home(update : Update ,context : ContextTypes.DEFAULT_TYPE)
 حتی بعضی از جلسات رو تکی هم میتونی ثبت نام کنی 😍🌱
 
 
-قیمت : 1,890,000 تومان
+قیمت : 890,000 تومان
   '''
   text_t1 = '''
   🔥ترم اول🔥
@@ -823,7 +824,7 @@ async def sefr_ta_sad_home(update : Update ,context : ContextTypes.DEFAULT_TYPE)
 برای ثبت نام 👇🏻
 
 
-قیمت : ,540,000 تومان
+قیمت : ,430,000 تومان
 
   '''
   text_t2 = '''
@@ -837,7 +838,7 @@ async def sefr_ta_sad_home(update : Update ,context : ContextTypes.DEFAULT_TYPE)
 ترم دوم رو هم میتونی یکجا و هم به صورت تک جلسه ای ثبت نام کنی 🌱✨
   
 
-قیمت : ,600,000 تومان
+قیمت : ,480,000 تومان
   '''
   text_t3='''
   💥ترم سوم 💥
@@ -849,7 +850,7 @@ async def sefr_ta_sad_home(update : Update ,context : ContextTypes.DEFAULT_TYPE)
 ترم سوم رو هم میتونی یکجا و هم به صورت تک جلسه ای ثبت نام کنی 🌱✨
   
   
-قیمت : ,750,000 تومان
+قیمت : ,590,000 تومان
   '''
   
   query = update.callback_query
@@ -880,7 +881,7 @@ async def tak_chehre_home(update : Update ,context : ContextTypes.DEFAULT_TYPE) 
 
 🔥تخفیف ویژه پکیج تکچهره 🔥
 
-قیمت : ,980,000 تومان
+قیمت : ,680,000 تومان
 '''
   reply_markup = InlineKeyboardMarkup(keyboard)
   text = "متن صفحه اصلی پکیج تک جهره"
@@ -910,7 +911,7 @@ async def poost_package_home(update : Update ,context : ContextTypes.DEFAULT_TYP
 اگه قبلا نقاشی چهره کار کردی و میخوای که کارات بافت هایپررئال تری داشته باشه 
 این دوره مخصوصِ خودته✨🪄
  
-قیمت : ,2,580,000 تومان
+قیمت : 1,360,000 تومان
  '''
  query = update.callback_query
  await query.answer()
@@ -922,14 +923,14 @@ async def poost_package_home(update : Update ,context : ContextTypes.DEFAULT_TYP
 async def buy_sefr_ta_sad(update : Update , context : ContextTypes.DEFAULT_TYPE) -> str:
   query = update.callback_query
   context.user_data[PACKAGE] = "sefr_ta_sad"
-  context.user_data[PRICE] = "1.890.000"
-  context.user_data[PRICE_T] = "980.000"
+  context.user_data[PRICE] = 890.000
   context.user_data[URL] = ["https://t.me/+RhELuOdUW200M2U0 ","https://t.me/+OML8kGGK_xUwOGFk" ,"https://t.me/+OZLCocS5l0xjZDdk ", "https://t.me/+OldALVtZrpYzNjU0"]
+  context.user_data[PRICE_T] = 0
   await query.answer()
   keyboard = [[InlineKeyboardButton("بازگشت",callback_data=str(BACK))]]
   text = f'''
   برای خرید پکیج  » {context.user_data[PACKAGE]}
-لطفا مبلغ » {context.user_data[PRICE]} 
+لطفا مبلغ » {context.user_data[PRICE]:.3f} 
 به شماره کارت ارسال شده به نام سرکار خانم مریم باقری  واریز نمایید.🙏🙏🙏
 اگر کد تخفیف دارید آن را به صورت حروف بزرگ ارسال کنید و با قیمت تخفیف خورده خریداری کنید.
 
@@ -945,14 +946,14 @@ async def buy_sefr_ta_sad(update : Update , context : ContextTypes.DEFAULT_TYPE)
 async def buy_tak_chehre(update : Update , context : ContextTypes.DEFAULT_TYPE) -> str:
   query = update.callback_query
   context.user_data[PACKAGE] = "tak_chehre"
-  context.user_data[PRICE] = "980.000"
-  context.user_data[PRICE_T] = "680.000"
+  context.user_data[PRICE] = 680.000
+  context.user_data[PRICE_T] = 0
   context.user_data[URL] = ["https://t.me/+zNjvj8YebyQ5MjU0"]
   await query.answer()
   keyboard = [[InlineKeyboardButton("بازگشت",callback_data=str(BACK))]]
   text = f'''
   برای خرید پکیج  » {context.user_data[PACKAGE]}
-لطفا مبلغ » {context.user_data[PRICE]} 
+لطفا مبلغ » {context.user_data[PRICE]:.3f} 
 به شماره کارت ارسال شده به نام سرکار خانم مریم باقری  واریز نمایید.🙏🙏🙏
 اگر کد تخفیف دارید آن را به صورت حروف بزرگ ارسال کنید و با قیمت تخفیف خورده خریداری کنید.
 
@@ -968,14 +969,14 @@ async def buy_tak_chehre(update : Update , context : ContextTypes.DEFAULT_TYPE) 
 async def buy_poost(update : Update , context : ContextTypes.DEFAULT_TYPE) -> str:
   query = update.callback_query
   context.user_data[PACKAGE] = "poost"
-  context.user_data[PRICE] = "2.580.000"
-  context.user_data[PRICE_T] = "1.360.000"
+  context.user_data[PRICE] = 1360.000
+  context.user_data[PRICE_T] = 0
 
   await query.answer()
   keyboard = [[InlineKeyboardButton("بازگشت",callback_data=str(BACK))]]
   text = f'''
   برای خرید پکیج  » {context.user_data[PACKAGE]}
-لطفا مبلغ » {context.user_data[PRICE]} 
+لطفا مبلغ » {context.user_data[PRICE]:.3f} 
 به شماره کارت ارسال شده به نام سرکار خانم مریم باقری  واریز نمایید.🙏🙏🙏
 اگر کد تخفیف دارید آن را به صورت حروف بزرگ ارسال کنید و با قیمت تخفیف خورده خریداری کنید.
 
@@ -992,14 +993,14 @@ async def buy_poost(update : Update , context : ContextTypes.DEFAULT_TYPE) -> st
 async def buy_starter(update : Update , context : ContextTypes.DEFAULT_TYPE) -> str:
   query = update.callback_query
   context.user_data[PACKAGE] = "starter"
-  context.user_data[PRICE] = "890.000"
-  context.user_data[PRICE_T] = "530.000"
+  context.user_data[PRICE] = 530.000
+  context.user_data[PRICE_T] = 0
 
   await query.answer()
   keyboard = [[InlineKeyboardButton("بازگشت",callback_data=str(BACK))]]
   text = f'''
   برای خرید پکیج  » {context.user_data[PACKAGE]}
-لطفا مبلغ » {context.user_data[PRICE]} 
+لطفا مبلغ » {context.user_data[PRICE]:.3f} 
 به شماره کارت ارسال شده به نام سرکار خانم مریم باقری  واریز نمایید.🙏🙏🙏
 اگر کد تخفیف دارید آن را به صورت حروف بزرگ ارسال کنید و با قیمت تخفیف خورده خریداری کنید.
 
@@ -1015,14 +1016,14 @@ async def buy_starter(update : Update , context : ContextTypes.DEFAULT_TYPE) -> 
 async def buy_pishrafte(update : Update , context : ContextTypes.DEFAULT_TYPE) -> str:
   query = update.callback_query
   context.user_data[PACKAGE] = "pishrafte"
-  context.user_data[PRICE] = "1.690.000"
-  context.user_data[PRICE_T] = "920.000"
+  context.user_data[PRICE] = 920.000
+  context.user_data[PRICE_T] = 0
 
   await query.answer()
   keyboard = [[InlineKeyboardButton("بازگشت",callback_data=str(BACK))]]
   text = f'''
   برای خرید پکیج  » {context.user_data[PACKAGE]}
-لطفا مبلغ » {context.user_data[PRICE]} 
+لطفا مبلغ » {context.user_data[PRICE]:.3f} 
 به شماره کارت ارسال شده به نام سرکار خانم مریم باقری  واریز نمایید.🙏🙏🙏
 اگر کد تخفیف دارید آن را به صورت حروف بزرگ ارسال کنید و با قیمت تخفیف خورده خریداری کنید.
 
@@ -1041,8 +1042,8 @@ async def buy_pishrafte(update : Update , context : ContextTypes.DEFAULT_TYPE) -
 async def buy_term_2(update : Update , context : ContextTypes.DEFAULT_TYPE) -> str:
   query = update.callback_query
   context.user_data[PACKAGE] = "term_2"
-  context.user_data[PRICE] = "600.000"
-  context.user_data[PRICE_T] = "480.000"
+  context.user_data[PRICE] = 480.000
+  context.user_data[PRICE_T] = 0
 
   context.user_data[URL] = ["https://t.me/+DMM_XeNZlxc1NzY0"]
   await query.answer()
@@ -1050,7 +1051,7 @@ async def buy_term_2(update : Update , context : ContextTypes.DEFAULT_TYPE) -> s
   reply_markup = InlineKeyboardMarkup(keyboard)
   text = f'''
   برای خرید پکیج  » {context.user_data[PACKAGE]}
-لطفا مبلغ » {context.user_data[PRICE]} 
+لطفا مبلغ » {context.user_data[PRICE]:.3f} 
 به شماره کارت ارسال شده به نام سرکار خانم مریم باقری  واریز نمایید.🙏🙏🙏
 اگر کد تخفیف دارید آن را به صورت حروف بزرگ ارسال کنید و با قیمت تخفیف خورده خریداری کنید.
 
@@ -1064,16 +1065,16 @@ async def buy_term_2(update : Update , context : ContextTypes.DEFAULT_TYPE) -> s
 async def buy_term_1(update : Update , context : ContextTypes.DEFAULT_TYPE) -> str:
   query = update.callback_query
   context.user_data[PACKAGE] = "term_1"
-  context.user_data[PRICE] = "540,000"
-  context.user_data[PRICE_T] = "430.000"
+  context.user_data[PRICE] = 430.000
+  context.user_data[PRICE_T] = 0
 
-  context.user_data[URL] = ["https://t.me/+RhELuOdUW200M2U0" ,"https://t.me/+OML8kGGK_xUwOGFk"]
+  context.user_data[URL] = ["https://t.me/+1buEEob9ZMZiNGY0" ,"https://t.me/+YhaxpPztbBI4MzRk"]
   await query.answer()
   keyboard = [[InlineKeyboardButton("بازگشت",callback_data=str(BACK))]]
   reply_markup = InlineKeyboardMarkup(keyboard)
   text = f'''
   برای خرید پکیج  » {context.user_data[PACKAGE]}
-لطفا مبلغ » {context.user_data[PRICE]} 
+لطفا مبلغ » {context.user_data[PRICE]:.3f} 
 به شماره کارت ارسال شده به نام سرکار خانم مریم باقری  واریز نمایید.🙏🙏🙏
 اگر کد تخفیف دارید آن را به صورت حروف بزرگ ارسال کنید و با قیمت تخفیف خورده خریداری کنید.
 
@@ -1087,8 +1088,8 @@ async def buy_term_1(update : Update , context : ContextTypes.DEFAULT_TYPE) -> s
 async def buy_term_3(update : Update , context : ContextTypes.DEFAULT_TYPE) -> str:
   query = update.callback_query
   context.user_data[PACKAGE] = "term_3"
-  context.user_data[PRICE] = "750.000"
-  context.user_data[PRICE_T] = "590.000"
+  context.user_data[PRICE] = 590.000
+  context.user_data[PRICE_T] = 0
 
   context.user_data[URL] = ["https://t.me/+99h5iMpcQgc4ZjE0"]
   await query.answer()
@@ -1096,7 +1097,7 @@ async def buy_term_3(update : Update , context : ContextTypes.DEFAULT_TYPE) -> s
   reply_markup = InlineKeyboardMarkup(keyboard)
   text = f'''
   برای خرید پکیج  » {context.user_data[PACKAGE]}
-لطفا مبلغ » {context.user_data[PRICE]} 
+لطفا مبلغ » {context.user_data[PRICE]:.3f} 
 به شماره کارت ارسال شده به نام سرکار خانم مریم باقری  واریز نمایید.🙏🙏🙏
 اگر کد تخفیف دارید آن را به صورت حروف بزرگ ارسال کنید و با قیمت تخفیف خورده خریداری کنید.
 
@@ -1112,15 +1113,15 @@ async def buy_term_3(update : Update , context : ContextTypes.DEFAULT_TYPE) -> s
 async def buy_cheshm_3rokh(update : Update , context : ContextTypes.DEFAULT_TYPE) -> str:
   query = update.callback_query
   context.user_data[PACKAGE] = "cheshm_3rokh"
-  context.user_data[PRICE] = "220.000"
-  context.user_data[PRICE_T] = "170.000"
+  context.user_data[PRICE] = 170.000
+  context.user_data[PRICE_T] = 0
 
   await query.answer()
   keyboard = [[InlineKeyboardButton("بازگشت",callback_data=str(BACK))]]
   reply_markup = InlineKeyboardMarkup(keyboard)
   text = f'''
   برای خرید پکیج  » {context.user_data[PACKAGE]}
-لطفا مبلغ » {context.user_data[PRICE]} 
+لطفا مبلغ » {context.user_data[PRICE]:.3f} 
 به شماره کارت ارسال شده به نام سرکار خانم مریم باقری  واریز نمایید.🙏🙏🙏
 اگر کد تخفیف دارید آن را به صورت حروف بزرگ ارسال کنید و با قیمت تخفیف خورده خریداری کنید.
 
@@ -1136,15 +1137,15 @@ async def buy_cheshm_3rokh(update : Update , context : ContextTypes.DEFAULT_TYPE
 async def buy_bini(update : Update , context : ContextTypes.DEFAULT_TYPE) -> str:
   query = update.callback_query
   context.user_data[PACKAGE] = "bini"
-  context.user_data[PRICE] = "225.000"
-  context.user_data[PRICE_T] = "180.000"
+  context.user_data[PRICE] = 180.000
+  context.user_data[PRICE_T] = 0
 
   await query.answer()
   keyboard = [[InlineKeyboardButton("بازگشت",callback_data=str(BACK))]]
   reply_markup = InlineKeyboardMarkup(keyboard)
   text = f'''
   برای خرید پکیج  » {context.user_data[PACKAGE]}
-لطفا مبلغ » {context.user_data[PRICE]} 
+لطفا مبلغ » {context.user_data[PRICE]:.3f} 
 به شماره کارت ارسال شده به نام سرکار خانم مریم باقری  واریز نمایید.🙏🙏🙏
 اگر کد تخفیف دارید آن را به صورت حروف بزرگ ارسال کنید و با قیمت تخفیف خورده خریداری کنید.
 
@@ -1159,15 +1160,15 @@ async def buy_bini(update : Update , context : ContextTypes.DEFAULT_TYPE) -> str
 async def buy_bini_pir(update : Update , context : ContextTypes.DEFAULT_TYPE) -> str:
   query = update.callback_query
   context.user_data[PACKAGE] = "bini_pir"
-  context.user_data[PRICE] = "250.000"
-  context.user_data[PRICE_T] = "200.000"
+  context.user_data[PRICE] = 200.000
+  context.user_data[PRICE_T] = 0
 
   await query.answer()
   keyboard = [[InlineKeyboardButton("بازگشت",callback_data=str(BACK))]]
   reply_markup = InlineKeyboardMarkup(keyboard)
   text = f'''
   برای خرید پکیج  » {context.user_data[PACKAGE]}
-لطفا مبلغ » {context.user_data[PRICE]} 
+لطفا مبلغ » {context.user_data[PRICE]:.3f} 
 به شماره کارت ارسال شده به نام سرکار خانم مریم باقری  واریز نمایید.🙏🙏🙏
 اگر کد تخفیف دارید آن را به صورت حروف بزرگ ارسال کنید و با قیمت تخفیف خورده خریداری کنید.
 
@@ -1182,15 +1183,15 @@ async def buy_bini_pir(update : Update , context : ContextTypes.DEFAULT_TYPE) ->
 async def buy_bini_3rokh(update : Update , context : ContextTypes.DEFAULT_TYPE) -> str:
   query = update.callback_query
   context.user_data[PACKAGE] = "bini_3rokh"
-  context.user_data[PRICE] = "220.000"
-  context.user_data[PRICE_T] = "170.000"
+  context.user_data[PRICE] = 170.000
+  context.user_data[PRICE_T] = 0
 
   await query.answer()
   keyboard = [[InlineKeyboardButton("بازگشت",callback_data=str(BACK))]]
   reply_markup = InlineKeyboardMarkup(keyboard)
   text = f'''
   برای خرید پکیج  » {context.user_data[PACKAGE]}
-لطفا مبلغ » {context.user_data[PRICE]} 
+لطفا مبلغ » {context.user_data[PRICE]:.3f} 
 به شماره کارت ارسال شده به نام سرکار خانم مریم باقری  واریز نمایید.🙏🙏🙏
 اگر کد تخفیف دارید آن را به صورت حروف بزرگ ارسال کنید و با قیمت تخفیف خورده خریداری کنید.
 
@@ -1206,15 +1207,15 @@ async def buy_bini_3rokh(update : Update , context : ContextTypes.DEFAULT_TYPE) 
 async def buy_lab(update : Update , context : ContextTypes.DEFAULT_TYPE) -> str:
   query = update.callback_query
   context.user_data[PACKAGE] = "lab"
-  context.user_data[PRICE] = "200.000"
-  context.user_data[PRICE_T] = "150.000"
+  context.user_data[PRICE] = 150.000
+  context.user_data[PRICE_T] = 0
 
   await query.answer()
   keyboard = [[InlineKeyboardButton("بازگشت",callback_data=str(BACK))]]
   reply_markup = InlineKeyboardMarkup(keyboard)
   text = f'''
   برای خرید پکیج  » {context.user_data[PACKAGE]}
-لطفا مبلغ » {context.user_data[PRICE]} 
+لطفا مبلغ » {context.user_data[PRICE]:.3f} 
 به شماره کارت ارسال شده به نام سرکار خانم مریم باقری  واریز نمایید.🙏🙏🙏
 اگر کد تخفیف دارید آن را به صورت حروف بزرگ ارسال کنید و با قیمت تخفیف خورده خریداری کنید.
 
@@ -1229,15 +1230,15 @@ async def buy_lab(update : Update , context : ContextTypes.DEFAULT_TYPE) -> str:
 async def buy_lab_almasi(update : Update , context : ContextTypes.DEFAULT_TYPE) -> str:
   query = update.callback_query
   context.user_data[PACKAGE] = "lab_almasi"
-  context.user_data[PRICE] = "250.000"
-  context.user_data[PRICE_T] = "200.000"
+  context.user_data[PRICE] = 200.000
+  context.user_data[PRICE_T] = 0
 
   await query.answer()
   keyboard = [[InlineKeyboardButton("بازگشت",callback_data=str(BACK))]]
   reply_markup = InlineKeyboardMarkup(keyboard)
   text = f'''
   برای خرید پکیج  » {context.user_data[PACKAGE]}
-لطفا مبلغ » {context.user_data[PRICE]} 
+لطفا مبلغ » {context.user_data[PRICE]:.3f} 
 به شماره کارت ارسال شده به نام سرکار خانم مریم باقری  واریز نمایید.🙏🙏🙏
 اگر کد تخفیف دارید آن را به صورت حروف بزرگ ارسال کنید و با قیمت تخفیف خورده خریداری کنید.
 
@@ -1253,15 +1254,15 @@ async def buy_lab_almasi(update : Update , context : ContextTypes.DEFAULT_TYPE) 
 async def buy_lab_asali(update : Update , context : ContextTypes.DEFAULT_TYPE) -> str:
   query = update.callback_query
   context.user_data[PACKAGE] = "lab_asali"
-  context.user_data[PRICE] = "220.000"
-  context.user_data[PRICE_T] = "170.000"
+  context.user_data[PRICE] = 170.000
+  context.user_data[PRICE_T] = 0
 
   await query.answer()
   keyboard = [[InlineKeyboardButton("بازگشت",callback_data=str(BACK))]]
   reply_markup = InlineKeyboardMarkup(keyboard)
   text = f'''
   برای خرید پکیج  » {context.user_data[PACKAGE]}
-لطفا مبلغ » {context.user_data[PRICE]} 
+لطفا مبلغ » {context.user_data[PRICE]:.3f} 
 به شماره کارت ارسال شده به نام سرکار خانم مریم باقری  واریز نمایید.🙏🙏🙏
 اگر کد تخفیف دارید آن را به صورت حروف بزرگ ارسال کنید و با قیمت تخفیف خورده خریداری کنید.
 
@@ -1277,15 +1278,15 @@ async def buy_lab_asali(update : Update , context : ContextTypes.DEFAULT_TYPE) -
 async def buy_tonazh_moo_ghahvei(update : Update , context : ContextTypes.DEFAULT_TYPE) -> str:
   query = update.callback_query
   context.user_data[PACKAGE] = "moo_ghahvei"
-  context.user_data[PRICE] = "200.000"
-  context.user_data[PRICE_T] = "150.000"
+  context.user_data[PRICE] = 150.000
+  context.user_data[PRICE_T] = 0
 
   await query.answer()
   keyboard = [[InlineKeyboardButton("بازگشت",callback_data=str(BACK))]]
   reply_markup = InlineKeyboardMarkup(keyboard)
   text = f'''
   برای خرید پکیج  » {context.user_data[PACKAGE]}
-لطفا مبلغ » {context.user_data[PRICE]} 
+لطفا مبلغ » {context.user_data[PRICE]:.3f} 
 به شماره کارت ارسال شده به نام سرکار خانم مریم باقری  واریز نمایید.🙏🙏🙏
 اگر کد تخفیف دارید آن را به صورت حروف بزرگ ارسال کنید و با قیمت تخفیف خورده خریداری کنید.
 
@@ -1300,15 +1301,15 @@ async def buy_tonazh_moo_ghahvei(update : Update , context : ContextTypes.DEFAUL
 async def buy_tonazh_moo_siah(update : Update , context : ContextTypes.DEFAULT_TYPE) -> str:
   query = update.callback_query
   context.user_data[PACKAGE] = "moo_siah"
-  context.user_data[PRICE] = "200.000"
-  context.user_data[PRICE_T] = "150.000"
+  context.user_data[PRICE] = 150.000
+  context.user_data[PRICE_T] = 0
 
   await query.answer()
   keyboard = [[InlineKeyboardButton("بازگشت",callback_data=str(BACK))]]
   reply_markup = InlineKeyboardMarkup(keyboard)
   text = f'''
   برای خرید پکیج  » {context.user_data[PACKAGE]}
-لطفا مبلغ » {context.user_data[PRICE]} 
+لطفا مبلغ » {context.user_data[PRICE]:.3f} 
 به شماره کارت ارسال شده به نام سرکار خانم مریم باقری  واریز نمایید.🙏🙏🙏
 اگر کد تخفیف دارید آن را به صورت حروف بزرگ ارسال کنید و با قیمت تخفیف خورده خریداری کنید.
 
@@ -1323,15 +1324,15 @@ async def buy_tonazh_moo_siah(update : Update , context : ContextTypes.DEFAULT_T
 async def buy_moo_taylor(update : Update , context : ContextTypes.DEFAULT_TYPE) -> str:
   query = update.callback_query
   context.user_data[PACKAGE] = "moo_taylor"
-  context.user_data[PRICE] = "340.000"
-  context.user_data[PRICE_T] = "290.000"
+  context.user_data[PRICE] = 290.000
+  context.user_data[PRICE_T] = 0
 
   await query.answer()
   keyboard = [[InlineKeyboardButton("بازگشت",callback_data=str(BACK))]]
   reply_markup = InlineKeyboardMarkup(keyboard)
   text = f'''
   برای خرید پکیج  » {context.user_data[PACKAGE]}
-لطفا مبلغ » {context.user_data[PRICE]} 
+لطفا مبلغ » {context.user_data[PRICE]:.3f} 
 به شماره کارت ارسال شده به نام سرکار خانم مریم باقری  واریز نمایید.🙏🙏🙏
 اگر کد تخفیف دارید آن را به صورت حروف بزرگ ارسال کنید و با قیمت تخفیف خورده خریداری کنید.
 
@@ -1346,14 +1347,14 @@ async def buy_moo_taylor(update : Update , context : ContextTypes.DEFAULT_TYPE) 
 async def buy_moo_shinion(update : Update , context : ContextTypes.DEFAULT_TYPE) -> str:
   query = update.callback_query
   context.user_data[PACKAGE] = "moo_shinion"
-  context.user_data[PRICE] = "380.000"
-  context.user_data[PRICE_T] = "330.000"
+  context.user_data[PRICE] = 330.000
+  context.user_data[PRICE_T] = 0
 
   await query.answer()
   keyboard = [[InlineKeyboardButton("بازگشت",callback_data=str(BACK))]]
   text = f'''
   برای خرید پکیج  » {context.user_data[PACKAGE]}
-لطفا مبلغ » {context.user_data[PRICE]} 
+لطفا مبلغ » {context.user_data[PRICE]:.3f} 
 به شماره کارت ارسال شده به نام سرکار خانم مریم باقری  واریز نمایید.🙏🙏🙏
 اگر کد تخفیف دارید آن را به صورت حروف بزرگ ارسال کنید و با قیمت تخفیف خورده خریداری کنید.
 
@@ -1372,8 +1373,8 @@ async def buy_moo_shinion(update : Update , context : ContextTypes.DEFAULT_TYPE)
 async def buy_moo_pesar(update : Update , context : ContextTypes.DEFAULT_TYPE) -> str:
   query = update.callback_query
   context.user_data[PACKAGE] = "moo_pesar"
-  context.user_data[PRICE] = "360.000"
-  context.user_data[PRICE_T] = "310.000"
+  context.user_data[PRICE] = 310.000
+  context.user_data[PRICE_T] = 0
 
   await query.answer()
   keyboard = [[InlineKeyboardButton("بازگشت",callback_data=str(BACK))]]
@@ -1381,7 +1382,7 @@ async def buy_moo_pesar(update : Update , context : ContextTypes.DEFAULT_TYPE) -
    
   text = f'''
   برای خرید پکیج  » {context.user_data[PACKAGE]}
-لطفا مبلغ » {context.user_data[PRICE]} 
+لطفا مبلغ » {context.user_data[PRICE]:.3f} 
 به شماره کارت ارسال شده به نام سرکار خانم مریم باقری  واریز نمایید.🙏🙏🙏
 اگر کد تخفیف دارید آن را به صورت حروف بزرگ ارسال کنید و با قیمت تخفیف خورده خریداری کنید.
 
@@ -1404,9 +1405,7 @@ async def forward_to_admin(update : Update , context : ContextTypes.DEFAULT_TYPE
   price = context.user_data[PRICE]
   context.user_data[ID] = user_id
   package = context.user_data[PACKAGE]
-  url = context.user_data[URL]
   takhfif = context.user_data[PRICE_T]
-
   
   reply_text = '''
   فیش ارسالی شما برای ادمین ارسال شد.
@@ -1441,15 +1440,27 @@ async def forward_to_admin(update : Update , context : ContextTypes.DEFAULT_TYPE
 
  
 async def code_takhfif(update:Update,context:ContextTypes.DEFAULT_TYPE) -> str :
-  codes = ["PNT001","PNT002","PNT003"]
+  codes = ["PNT001","PNT002","PNT003","PNT004","PNT005"]
   message = update.message.text
   print(message)
-
-  if message == "PNT001" or message == "PNT002" or message == "PNT003" :
-    price_t = context.user_data[PRICE_T]
+  context.user_data[PRICE_T] = 0
+  keyboard = [[InlineKeyboardButton("بازگشت",callback_data=str(BACK))]]
+  reply_markup = InlineKeyboardMarkup(keyboard)
+  if message == "PNT001":
+    context.user_data[PRICE_T]= context.user_data[PRICE] * 0.80
+  elif message == "PNT002":
+    context.user_data[PRICE_T] = context.user_data[PRICE] * 0.75  
+  elif message == "PNT003" :
+    context.user_data[PRICE_T] = context.user_data[PRICE] * 0.70
+  elif message == "PNT004" : 
+    context.user_data[PRICE_T] = context.user_data[PRICE] * 0.60
+  elif message == "PNT005" :
+    context.user_data[PRICE_T] = context.user_data[PRICE] * 0.50
+  if context.user_data[PRICE_T] != 0 :
+    
     text = f'''
   برای خرید پکیج  » {context.user_data[PACKAGE]}
-لطفا مبلغ » {context.user_data[PRICE_T]} 
+لطفا مبلغ » {context.user_data[PRICE_T]:.3f} 
 به شماره کارت ارسال شده به نام سرکار خانم مریم باقری  واریز نمایید.🙏🙏🙏
 
 
@@ -1458,11 +1469,13 @@ async def code_takhfif(update:Update,context:ContextTypes.DEFAULT_TYPE) -> str :
 
 از صبر و شکیبایی شما ممنونیم.🧡💛
   '''
-    await update.message.reply_text(text=text)
+  
+    await update.message.reply_text(text=text,reply_markup=reply_markup)
     return FORWARD_TO_ADMIN
-  else:
+  else :
     text = "کد تفیف ارسالی مورد تأیید نمیباشد"
-    await update.message.reply_text(text=text)
+    await update.message.reply_text(text=text,reply_markup=reply_markup)
+  
   return FORWARD_TO_ADMIN
   
   
@@ -1567,8 +1580,11 @@ async def button_callback(update:Update,context:ContextTypes.DEFAULT_TYPE) -> st
     await query.answer("خرید پذیرفته شد")
     await bot.send_message(chat_id=user_id,text="فیش ارسالی شما با موفقیت توسط ادمین تأیید شد و لینک های گروه ها به صورت خودکار برای شما ارسال خواهد شد\nممنون از اعتماد و خرید شما\nدر صورتی که میخواهید دوباره از ربات استفاده کنید کلمه /start را ارسال کنید.",reply_markup=reply_markup)
     return SHOW_LINKS
-  else :
-    await bot.send_message(chat_id=user_id,text="فیش ارسالی شما توسط ادمین تأیید نشد.لطفا با ارسال /start و تماس با پشتیبانی اطلاعات لازم را دریافت کنید") 
+  else :  
+    keyboard = [[InlineKeyboardButton("بازگشت",callback_data=str(BACK))]]
+    reply_markup = InlineKeyboardMarkup(keyboard)
+    
+    await bot.send_message(chat_id=user_id,text="فیش ارسالی شما توسط ادمین تأیید نشد.لطفا با ارسال /start و تماس با پشتیبانی اطلاعات لازم را دریافت کنید",reply_markup=reply_markup) 
   
 
 async def back_lo_list(update:Update , context : ContextTypes.DEFAULT_TYPE) -> str :
