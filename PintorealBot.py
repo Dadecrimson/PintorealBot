@@ -709,7 +709,7 @@ async def starter_home(update:Update, context: ContextTypes.DEFAULT_TYPE) -> str
 12.روش های انتقال طرح
 
 
-قیمت : 530,000 تومان
+قیمت : 890,000 تومان
   '''
   
   query = update.callback_query
@@ -743,7 +743,7 @@ async def pishrafte_home(update:Update, context: ContextTypes.DEFAULT_TYPE) -> s
 تک تک مدلها با دقتُ وسواس انتخاب شدن تا همه نوع پوستی رو بعد از گذروندن این دوره بتونی به راحتی نقاشی کنی😍🍓✨
   
 
-قیمت : ,920,000 تومان
+قیمت : ,1,690,000 تومان
   '''
   
   query = update.callback_query
@@ -773,12 +773,15 @@ async def show_packages(update : Update ,context : ContextTypes.DEFAULT_TYPE) ->
 🔶 دوره صفر تا صد نقاشی چهره
 (شامل ۳ ترم فشرده از مبتدی تا حرفه ای) 
 
-🔶 پکیج تک چهره
+🔶 پکیج تک چهره دختر
 (بیش از 18  ساعت آموزش جزء به جزء یک مدل دختر)
+
+🔶 پکیج تک چهره پسر
+(آموزش جزء به جزء ریش و مو یک مدل پسر )
+
 🔶 پکیج پوست
 (شامل ۲ بخش استارتر و پیشرفته برای افراد مبتدی تا حرفه ای، مختص یادگیری انواع بافت و تناژ پوست)
-🔶 پکیج تک چهره
-(آموزش جزء به جزء ریش و مو یک مدل پسر )
+
 برای اطلاعات بیشتر راجع به هر دوره روی اسم دوره کلیک کن✨🪄
   '''
   await query.answer()
@@ -885,7 +888,7 @@ async def tak_chehre_home(update : Update ,context : ContextTypes.DEFAULT_TYPE) 
 
 🔥تخفیف ویژه پکیج تکچهره 🔥
 
-قیمت : ,680,000 تومان
+قیمت : ,980,000 تومان
 '''
   reply_markup = InlineKeyboardMarkup(keyboard)
   text = "متن صفحه اصلی پکیج تک جهره دختر"
@@ -941,7 +944,7 @@ async def poost_package_home(update : Update ,context : ContextTypes.DEFAULT_TYP
 اگه قبلا نقاشی چهره کار کردی و میخوای که کارات بافت هایپررئال تری داشته باشه 
 این دوره مخصوصِ خودته✨🪄
  
-قیمت : 1,360,000 تومان
+قیمت : 2,580,000 تومان
  '''
  query = update.callback_query
  await query.answer()
@@ -976,7 +979,7 @@ async def buy_sefr_ta_sad(update : Update , context : ContextTypes.DEFAULT_TYPE)
 async def buy_tak_chehre(update : Update , context : ContextTypes.DEFAULT_TYPE) -> str:
   query = update.callback_query
   context.user_data[PACKAGE] = "tak_chehre"
-  context.user_data[PRICE] = 680.000
+  context.user_data[PRICE] = 980.000
   context.user_data[PRICE_T] = 0
   context.user_data[URL] = ["https://t.me/+zNjvj8YebyQ5MjU0"]
   await query.answer()
@@ -1022,7 +1025,7 @@ async def buy_zein(update : Update , context : ContextTypes.DEFAULT_TYPE) -> str
 async def buy_poost(update : Update , context : ContextTypes.DEFAULT_TYPE) -> str:
   query = update.callback_query
   context.user_data[PACKAGE] = "poost"
-  context.user_data[PRICE] = 1360.000
+  context.user_data[PRICE] = 2580.000
   context.user_data[PRICE_T] = 0
 
   await query.answer()
@@ -1046,7 +1049,7 @@ async def buy_poost(update : Update , context : ContextTypes.DEFAULT_TYPE) -> st
 async def buy_starter(update : Update , context : ContextTypes.DEFAULT_TYPE) -> str:
   query = update.callback_query
   context.user_data[PACKAGE] = "starter"
-  context.user_data[PRICE] = 530.000
+  context.user_data[PRICE] = 890.000
   context.user_data[PRICE_T] = 0
 
   await query.answer()
@@ -1069,7 +1072,7 @@ async def buy_starter(update : Update , context : ContextTypes.DEFAULT_TYPE) -> 
 async def buy_pishrafte(update : Update , context : ContextTypes.DEFAULT_TYPE) -> str:
   query = update.callback_query
   context.user_data[PACKAGE] = "pishrafte"
-  context.user_data[PRICE] = 920.000
+  context.user_data[PRICE] = 1690.000
   context.user_data[PRICE_T] = 0
 
   await query.answer()
@@ -1493,7 +1496,11 @@ async def forward_to_admin(update : Update , context : ContextTypes.DEFAULT_TYPE
 
  
 async def code_takhfif(update:Update,context:ContextTypes.DEFAULT_TYPE) -> str :
-  codes = ["0T100-1","0T100-2","0T100-3","POOST-1","POOST-2","POOST-3","TKH-1","TKH-2","TKH-3","ZEIN-1","ZEIN-2","ZEIN-3"]
+  codes = ["0T100-1","0T100-2","0T100-3","POOST-1","POOST-2","POOST-3",
+           "TKH-1","TKH-2","TKH-3","ZEIN-1","ZEIN-2","ZEIN-3",
+           "TRM1-1","TRM1-2","TRM1-3","TRM2-1","TRM2-2","TRM2-3","TRM3-1","TRM3-2","TRM3-3",
+           "STARTER-1","STARTER-2","STARTER-3","PISHRAFTE-1","PISHRAFTE-2","PISHRAFTE-3",
+           ]
   message = update.message.text
   print(message)
   context.user_data[PRICE_T] = 0
@@ -1507,6 +1514,17 @@ async def code_takhfif(update:Update,context:ContextTypes.DEFAULT_TYPE) -> str :
     context.user_data[PRICE_T] = context.user_data[PRICE] * 0.70
   elif message == "ZEIN-1" or message == "ZEIN-2" or message == "ZEIN-3": 
     context.user_data[PRICE_T] = context.user_data[PRICE] * 0.50
+  elif message == "TRM1-1" or message == "TRM1-2" or message == "TRM1-3": 
+    context.user_data[PRICE_T] = context.user_data[PRICE] * 0.80
+  elif message == "TRM2-1" or message == "TRM2-2" or message == "TRM2-3": 
+    context.user_data[PRICE_T] = context.user_data[PRICE] * 0.80
+  elif message == "TRM3-1" or message == "TRM3-2" or message == "TRM3-3": 
+    context.user_data[PRICE_T] = context.user_data[PRICE] * 0.80
+  elif message == "STARTER-1" or message == "STARTER-2" or message == "STARTER-3": 
+    context.user_data[PRICE_T] = context.user_data[PRICE] * 0.60
+  elif message == "PISHRAFTE-1" or message == "PISHRAFTE-2" or message == "PISHRAFTE-3": 
+    context.user_data[PRICE_T] = context.user_data[PRICE] * 0.55
+
   if context.user_data[PRICE_T] != 0 :
     
     text = f'''
