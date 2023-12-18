@@ -84,7 +84,9 @@ END = ConversationHandler.END
   SHOW_LINKS,
   USER_ID,
   CODE,
-  ID,) = map(chr,range(0,25))
+  ID,
+  ZEIN,
+  BUY_ZEIN,) = map(chr,range(0,27))
 
 
 # PAGES :
@@ -212,7 +214,7 @@ _ابرو ، مژه و بافت پوست
 با بافتها و تنهاژ های پوست آشنا میشید، ترکیب و تشخیص رنگ رو یاد میگیرید
 ینی هر چیزی که برای استارت نقاشی لازمه توی این ترم هست✨
 
-قیمت : 430,000 تومان
+قیمت : 600,000 تومان
   
   '''
   
@@ -255,7 +257,7 @@ async def term_2_home(update:Update , context:ContextTypes.DEFAULT_TYPE) -> str 
 
 ...
 
-قیمت :480,000تومان🔥😱
+قیمت :680,000تومان🔥😱
   '''
   
   await update.callback_query.answer()
@@ -308,7 +310,7 @@ async def term_3_home(update:Update , context: ContextTypes.DEFAULT_TYPE) -> str
 این ترم شامل نه جلسه است که تا جلسه ششم تکمیله و سه جلسه آخر در حال تکمیله🍓
 
 
-قیمت : 590,000تومان
+قیمت : 980,000تومان
   
   '''
   query = update.callback_query
@@ -753,9 +755,10 @@ async def pishrafte_home(update:Update, context: ContextTypes.DEFAULT_TYPE) -> s
   
 async def show_packages(update : Update ,context : ContextTypes.DEFAULT_TYPE) -> str :
   keyboard = [
-    [InlineKeyboardButton("پکیج صفر تا صد",callback_data=str(SEFR_TA_SAD))],
+    [InlineKeyboardButton("پکیج صفر تا صد نقاشی چهره",callback_data=str(SEFR_TA_SAD))],
     [InlineKeyboardButton("پکیج پوست",callback_data=str(POOST))],
-    [InlineKeyboardButton("پکیج تک چهره",callback_data=str(TAK_CHEHRE))],
+    [InlineKeyboardButton("پکیج تک چهره دختر",callback_data=str(TAK_CHEHRE))],
+    [InlineKeyboardButton("پکیج تک چهره زین",callback_data=str(ZEIN))],
     [InlineKeyboardButton("بازگشت",callback_data=str(BACK))]
     
   ]
@@ -767,14 +770,15 @@ async def show_packages(update : Update ,context : ContextTypes.DEFAULT_TYPE) ->
   🍓فهرست دوره ها:
 این لیست دوره های اصلیمونِ ✨
 
-🔶 دوره صفر تا صد
+🔶 دوره صفر تا صد نقاشی چهره
 (شامل ۳ ترم فشرده از مبتدی تا حرفه ای) 
 
 🔶 پکیج تک چهره
 (بیش از 18  ساعت آموزش جزء به جزء یک مدل دختر)
 🔶 پکیج پوست
 (شامل ۲ بخش استارتر و پیشرفته برای افراد مبتدی تا حرفه ای، مختص یادگیری انواع بافت و تناژ پوست)
-
+🔶 پکیج تک چهره
+(آموزش جزء به جزء ریش و مو یک مدل پسر )
 برای اطلاعات بیشتر راجع به هر دوره روی اسم دوره کلیک کن✨🪄
   '''
   await query.answer()
@@ -787,7 +791,7 @@ async def show_packages(update : Update ,context : ContextTypes.DEFAULT_TYPE) ->
   
 async def sefr_ta_sad_home(update : Update ,context : ContextTypes.DEFAULT_TYPE) -> str :
   keyboard = [
-    [InlineKeyboardButton("خرید پکیج صفر تا صد",callback_data=str(BUY_SEFR_TA_SAD))],
+    [InlineKeyboardButton("خرید پکیج صفر تا صد نقاشی چهره",callback_data=str(BUY_SEFR_TA_SAD))],
     [InlineKeyboardButton("ترم اول",callback_data=str(TERM_1)),
     InlineKeyboardButton("ترم دوم",callback_data=str(TERM_2)),
     InlineKeyboardButton("ترم سوم",callback_data=str(TERM_3))],
@@ -796,7 +800,7 @@ async def sefr_ta_sad_home(update : Update ,context : ContextTypes.DEFAULT_TYPE)
   ]
   reply_markup = InlineKeyboardMarkup(keyboard)
   text_main = '''
-  🔥دوره صفر تا صد 🔥
+  🔥 دوره صفر تا صد نقاشی چهره 🔥
 
 این دوره شامل 3 ترم آموزش مباحث پایه ، اجزای چهره و انواع مو هست. + یک ترم آپدیت رایگان. 
 دلیل 3 ترمی بودن دوره اینه که ما مباحث رو خیلی فشرده تر و جامع تر داخل هر ترم دسته بندی کردیم☄️✨
@@ -809,7 +813,7 @@ async def sefr_ta_sad_home(update : Update ,context : ContextTypes.DEFAULT_TYPE)
 حتی بعضی از جلسات رو تکی هم میتونی ثبت نام کنی 😍🌱
 
 
-قیمت : 890,000 تومان
+قیمت : 2,240,000 تومان
   '''
   text_t1 = '''
   🔥ترم اول🔥
@@ -824,7 +828,7 @@ async def sefr_ta_sad_home(update : Update ,context : ContextTypes.DEFAULT_TYPE)
 برای ثبت نام 👇🏻
 
 
-قیمت : ,430,000 تومان
+قیمت : ,600,000 تومان
 
   '''
   text_t2 = '''
@@ -838,7 +842,7 @@ async def sefr_ta_sad_home(update : Update ,context : ContextTypes.DEFAULT_TYPE)
 ترم دوم رو هم میتونی یکجا و هم به صورت تک جلسه ای ثبت نام کنی 🌱✨
   
 
-قیمت : ,480,000 تومان
+قیمت : ,680,000 تومان
   '''
   text_t3='''
   💥ترم سوم 💥
@@ -850,7 +854,7 @@ async def sefr_ta_sad_home(update : Update ,context : ContextTypes.DEFAULT_TYPE)
 ترم سوم رو هم میتونی یکجا و هم به صورت تک جلسه ای ثبت نام کنی 🌱✨
   
   
-قیمت : ,590,000 تومان
+قیمت : ,980,000 تومان
   '''
   
   query = update.callback_query
@@ -865,12 +869,12 @@ async def sefr_ta_sad_home(update : Update ,context : ContextTypes.DEFAULT_TYPE)
    
 async def tak_chehre_home(update : Update ,context : ContextTypes.DEFAULT_TYPE) -> str :
   keyboard = [
-    [InlineKeyboardButton("ثبت نام پکیج تک چهره",callback_data=str(BUY_TAK_CHEHRE))],
+    [InlineKeyboardButton("ثبت نام پکیج تک چهره دختر",callback_data=str(BUY_TAK_CHEHRE))],
     [InlineKeyboardButton("بازگشت",callback_data=str(BACK))]
     
   ]
   caption = '''
-پکیج تکچهره 
+پکیج تکچهره دختر 
 18 ساعت ویدیو آموزش صفر تا صد این مدل زیبا. 
  برای ثبت نام نیاز به پیش زمینه و سطح کارِ متوسط داره تا بتونید راحت از پس جزئیات این مدل بربیاید.
 اگر مبتدی هستید و تا به حال تکنیک مدادرنگی سبک هایپررئال کار نکردید، از دوره ی صفر تا صد باید شروع کنید تا از پایه قوی پیش برید.
@@ -884,12 +888,38 @@ async def tak_chehre_home(update : Update ,context : ContextTypes.DEFAULT_TYPE) 
 قیمت : ,680,000 تومان
 '''
   reply_markup = InlineKeyboardMarkup(keyboard)
-  text = "متن صفحه اصلی پکیج تک جهره"
+  text = "متن صفحه اصلی پکیج تک جهره دختر"
   query = update.callback_query
   await query.answer()
   await query.message.reply_photo(photo="takchehre.jpg",caption=caption,reply_markup=reply_markup)
   return SELECTION
   
+  
+  
+async def zein_home(update : Update ,context : ContextTypes.DEFAULT_TYPE) -> str :
+  keyboard = [
+    [InlineKeyboardButton("ثبت نام پکیج تک چهره زین",callback_data=str(BUY_ZEIN))],
+    [InlineKeyboardButton("بازگشت",callback_data=str(BACK))]
+    
+  ]
+  caption = '''
+   🔥 پکیج تک چهره زین 🔥
+   
+   
+  👈🏻صفر تا صد آموزش تک‌چهره پسر خیلی کمکت میکنه که از پس ریش ،موی کوتاه و روشن ،مدل موی پسرونه و پوست گردن و صورت بر بیای و خودش میتونه برای تو که آموزش مقدماتی دیدی یه پکیج کامل باشه تا بتونی چهره کامل بکشی 🔥
+تمام نکات مهم و کدهای مدادرنگی‌ها روی ویدئو نوشته شده ✨
+
+
+قیمت : ,975,000 تومان
+'''
+  reply_markup = InlineKeyboardMarkup(keyboard)
+  text = "متن صفحه اصلی پکیج تک جهره زین"
+  query = update.callback_query
+  await query.answer()
+  await query.message.reply_photo(photo="Zein.jpg",caption=caption,reply_markup=reply_markup)
+  return SELECTION
+  
+
 async def poost_package_home(update : Update ,context : ContextTypes.DEFAULT_TYPE) -> str :
  keyboard = [
    [InlineKeyboardButton("ثبت نام پکیج پوست",callback_data=str(BUY_POOST))],
@@ -923,7 +953,7 @@ async def poost_package_home(update : Update ,context : ContextTypes.DEFAULT_TYP
 async def buy_sefr_ta_sad(update : Update , context : ContextTypes.DEFAULT_TYPE) -> str:
   query = update.callback_query
   context.user_data[PACKAGE] = "sefr_ta_sad"
-  context.user_data[PRICE] = 890.000
+  context.user_data[PRICE] = 2240.000
   context.user_data[URL] = ["https://t.me/+RhELuOdUW200M2U0 ","https://t.me/+OML8kGGK_xUwOGFk" ,"https://t.me/+OZLCocS5l0xjZDdk ", "https://t.me/+OldALVtZrpYzNjU0"]
   context.user_data[PRICE_T] = 0
   await query.answer()
@@ -947,6 +977,29 @@ async def buy_tak_chehre(update : Update , context : ContextTypes.DEFAULT_TYPE) 
   query = update.callback_query
   context.user_data[PACKAGE] = "tak_chehre"
   context.user_data[PRICE] = 680.000
+  context.user_data[PRICE_T] = 0
+  context.user_data[URL] = ["https://t.me/+zNjvj8YebyQ5MjU0"]
+  await query.answer()
+  keyboard = [[InlineKeyboardButton("بازگشت",callback_data=str(BACK))]]
+  text = f'''
+  برای خرید پکیج  » {context.user_data[PACKAGE]}
+لطفا مبلغ » {context.user_data[PRICE]:.3f} 
+به شماره کارت ارسال شده به نام سرکار خانم مریم باقری  واریز نمایید.🙏🙏🙏
+اگر کد تخفیف دارید آن را به صورت حروف بزرگ ارسال کنید و با قیمت تخفیف خورده خریداری کنید.
+
+پس از واریز , فیش واریزی خود را در همین قسمت بفرستید تا برای ادمین ارسال شود.
+پس از تأیید فیش شما توسط ادمین لینک گروه ها به صورت خودکار برای شما ارسال خواهد شد.
+
+از صبر و شکیبایی شما ممنونیم.🧡💛
+  '''
+  reply_markup = InlineKeyboardMarkup(keyboard)
+  await query.message.reply_photo(photo="cardnumber.jpg",caption=text,reply_markup=reply_markup)
+  return FORWARD_TO_ADMIN
+
+async def buy_zein(update : Update , context : ContextTypes.DEFAULT_TYPE) -> str:
+  query = update.callback_query
+  context.user_data[PACKAGE] = "Zein_TakChehre"
+  context.user_data[PRICE] = 975.000
   context.user_data[PRICE_T] = 0
   context.user_data[URL] = ["https://t.me/+zNjvj8YebyQ5MjU0"]
   await query.answer()
@@ -1042,7 +1095,7 @@ async def buy_pishrafte(update : Update , context : ContextTypes.DEFAULT_TYPE) -
 async def buy_term_2(update : Update , context : ContextTypes.DEFAULT_TYPE) -> str:
   query = update.callback_query
   context.user_data[PACKAGE] = "term_2"
-  context.user_data[PRICE] = 480.000
+  context.user_data[PRICE] = 680.000
   context.user_data[PRICE_T] = 0
 
   context.user_data[URL] = ["https://t.me/+DMM_XeNZlxc1NzY0"]
@@ -1065,7 +1118,7 @@ async def buy_term_2(update : Update , context : ContextTypes.DEFAULT_TYPE) -> s
 async def buy_term_1(update : Update , context : ContextTypes.DEFAULT_TYPE) -> str:
   query = update.callback_query
   context.user_data[PACKAGE] = "term_1"
-  context.user_data[PRICE] = 430.000
+  context.user_data[PRICE] = 600.000
   context.user_data[PRICE_T] = 0
 
   context.user_data[URL] = ["https://t.me/+1buEEob9ZMZiNGY0" ,"https://t.me/+YhaxpPztbBI4MzRk"]
@@ -1088,7 +1141,7 @@ async def buy_term_1(update : Update , context : ContextTypes.DEFAULT_TYPE) -> s
 async def buy_term_3(update : Update , context : ContextTypes.DEFAULT_TYPE) -> str:
   query = update.callback_query
   context.user_data[PACKAGE] = "term_3"
-  context.user_data[PRICE] = 590.000
+  context.user_data[PRICE] = 980.000
   context.user_data[PRICE_T] = 0
 
   context.user_data[URL] = ["https://t.me/+99h5iMpcQgc4ZjE0"]
@@ -1440,21 +1493,19 @@ async def forward_to_admin(update : Update , context : ContextTypes.DEFAULT_TYPE
 
  
 async def code_takhfif(update:Update,context:ContextTypes.DEFAULT_TYPE) -> str :
-  codes = ["PNT001","PNT002","PNT003","PNT004","PNT005"]
+  codes = ["0T100-1","0T100-2","0T100-3","POOST-1","POOST-2","POOST-3","TKH-1","TKH-2","TKH-3","ZEIN-1","ZEIN-2","ZEIN-3"]
   message = update.message.text
   print(message)
   context.user_data[PRICE_T] = 0
   keyboard = [[InlineKeyboardButton("بازگشت",callback_data=str(BACK))]]
   reply_markup = InlineKeyboardMarkup(keyboard)
-  if message == "PNT001":
-    context.user_data[PRICE_T]= context.user_data[PRICE] * 0.80
-  elif message == "PNT002":
-    context.user_data[PRICE_T] = context.user_data[PRICE] * 0.75  
-  elif message == "PNT003" :
+  if message == "0T100-1" or message == "0T100-2" or message == "0T100-3":
+    context.user_data[PRICE_T]= context.user_data[PRICE] * 0.44
+  elif message == "POOST-1" or message == "POOST-2" or message == "POOST-3":
+    context.user_data[PRICE_T] = context.user_data[PRICE] * 0.55  
+  elif message == "TKH-1" or message == "TKH-2" or message == "TKH-3":
     context.user_data[PRICE_T] = context.user_data[PRICE] * 0.70
-  elif message == "PNT004" : 
-    context.user_data[PRICE_T] = context.user_data[PRICE] * 0.60
-  elif message == "PNT005" :
+  elif message == "ZEIN-1" or message == "ZEIN-2" or message == "ZEIN-3": 
     context.user_data[PRICE_T] = context.user_data[PRICE] * 0.50
   if context.user_data[PRICE_T] != 0 :
     
@@ -1473,7 +1524,7 @@ async def code_takhfif(update:Update,context:ContextTypes.DEFAULT_TYPE) -> str :
     await update.message.reply_text(text=text,reply_markup=reply_markup)
     return FORWARD_TO_ADMIN
   else :
-    text = "کد تفیف ارسالی مورد تأیید نمیباشد"
+    text = "کد تفیف ارسالی مورد تأیید نمیباشد.لطفا توجه داشته باشید که کد تخفیف را با حروف بزرگ ارسال نمایید"
     await update.message.reply_text(text=text,reply_markup=reply_markup)
   
   return FORWARD_TO_ADMIN
@@ -1493,16 +1544,21 @@ async def button_callback(update:Update,context:ContextTypes.DEFAULT_TYPE) -> st
     ]
   elif package == "sefr_ta_sad":
     keyboard = [
-      [InlineKeyboardButton("لینک گروه ترم اول ",url="https://t.me/+RhELuOdUW200M2U0")],
-      [InlineKeyboardButton("لینک گروه آپدیت ترم اول ",url="https://t.me/+OML8kGGK_xUwOGFk")],
+      [InlineKeyboardButton("لینک گروه ترم اول ",url="https://t.me/+1buEEob9ZMZiNGY0")],
+      [InlineKeyboardButton("لینک گروه آپدیت ترم اول ",url="https://t.me/+YhaxpPztbBI4MzRk")],
       [InlineKeyboardButton("لینک گروه ترم دوم ",url="https://t.me/+DMM_XeNZlxc1NzY0")],
       [InlineKeyboardButton("لینک گروه ترم سوم ",url="https://t.me/+99h5iMpcQgc4ZjE0")],
       [InlineKeyboardButton("بارگشت",callback_data=str(BACK))]
     ]
+  elif package =="Zein_TakChehre":
+    keyboard = [
+      [InlineKeyboardButton("لینک گروه تک چهره زین ",url="https://t.me/+otiOts5uoNA5OTA8")],
+      [InlineKeyboardButton("بازگشت",callback_data=str(BACK))]
+    ]
   elif package == "term_1":
     keyboard = [
-      [InlineKeyboardButton("لینک گروه آپدیت ترم اول ",url="https://t.me/+OML8kGGK_xUwOGFk")],
-      [InlineKeyboardButton("لینک گروه ترم اول ",url="https://t.me/+RhELuOdUW200M2U0")],
+      [InlineKeyboardButton("لینک گروه آپدیت ترم اول ",url="https://t.me/+1buEEob9ZMZiNGY0")],
+      [InlineKeyboardButton("لینک گروه ترم اول ",url="https://t.me/+YhaxpPztbBI4MzRk")],
       [InlineKeyboardButton("بازگشت",callback_data=str(BACK))]
     ]
   elif package == "term_2":
@@ -1745,6 +1801,31 @@ def main() -> None:
                                                 allow_reentry= True,
                                                  )
    
+      
+  zein_package_conv = ConversationHandler(entry_points=[CallbackQueryHandler(zein_home,pattern="^" + str(ZEIN) + "$")],
+                                                 states={
+                                                   SELECTION : [
+                                                     CallbackQueryHandler(buy_zein,pattern="^" + str(BUY_ZEIN) + "$"),
+                                                     CallbackQueryHandler(back_to_show_packages,pattern="^" + str(BACK) + "$"),
+                                                   ],
+                                                   FORWARD_TO_ADMIN : [MessageHandler(filters=filters.PHOTO ,callback= forward_to_admin),
+                                                                       MessageHandler(filters=filters.TEXT,callback=code_takhfif),
+                                                                       CallbackQueryHandler(zein_home,pattern="^"+str(BACK) + "$")],
+                                                   SHOW_LINKS : [
+                                                     CallbackQueryHandler(button_callback),
+                                                     CallbackQueryHandler(zein_home,pattern="^" + str(BACK) + "$")
+                                                   ]
+                                                    
+                                                 },
+                                                 fallbacks=[CommandHandler("start",start)],
+                                                 map_to_parent={
+                                                   STOP : STOP,
+                                                   FORWARD_TO_ADMIN: FORWARD_TO_ADMIN
+                                                 },
+                                                allow_reentry= True,
+                                                 )
+   
+   
    
   poost_package_conv = ConversationHandler(entry_points=[CallbackQueryHandler(poost_package_home,pattern="^"+ str(POOST) + "$")],
                                             states={
@@ -1784,6 +1865,7 @@ def main() -> None:
                 poost_package_conv,
                 tak_chehre_package_conv,
                 sefr_ta_sad_package_conv,
+                zein_package_conv,
                 CallbackQueryHandler(start_over,pattern="^" + str(BACK) + "$")
               ],
               FORWARD_TO_ADMIN : [MessageHandler(filters=filters.PHOTO ,callback= forward_to_admin),
