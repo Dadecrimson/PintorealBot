@@ -3,9 +3,9 @@ from telegram import InlineKeyboardButton,InlineKeyboardMarkup , KeyboardButton 
 from telegram.ext import PicklePersistence,Application,CallbackQueryHandler,CommandHandler,MessageHandler,ContextTypes, ConversationHandler,CallbackContext, filters
 import re
 
-# os.environ['HTTP_PROXY'] = '127.0.0.1:9119'
-# os.environ['HTTPS_PROXY'] = '127.0.0.1:9119'
-# os.environ['SOCKS_PROXY'] = '127.0.0.1:9150'
+os.environ['HTTP_PROXY'] = '127.0.0.1:9119'
+os.environ['HTTPS_PROXY'] = '127.0.0.1:9119'
+os.environ['SOCKS_PROXY'] = '127.0.0.1:9150'
 token = "6217084586:AAEwIqqQjfSyKlxxmTGUSWrCoJyhV7q_wko"
 bot = telegram.Bot(token=token)
 
@@ -131,7 +131,7 @@ async def start(update:Update, context: ContextTypes.DEFAULT_TYPE) -> str :
     سلام هنرجوی عزیز✨ 
 خیلی خوش حالیم که تیم آموزشی ما رو انتخاب کردی 😍🌱
  
-🔸از بخش فهرست پکیج میتونی لیست دوره هامونو ببینی✨  
+🔸از بخش فهرست پکیج ها میتونی لیست دوره هامونو ببینی✨  
 
 🔸برای ثبت نام و اطلاعات راجع به هر دوره روی اسمش کلیک کن و مراحل ثبت نام رو دنبال کن✨
 
@@ -154,7 +154,7 @@ async def start_over(update:Update, context: ContextTypes.DEFAULT_TYPE) -> str :
   
   keyboard = [
       [
-        InlineKeyboardButton("فهرست پکیج ",callback_data=str(SHOW_PACKAGES))
+        InlineKeyboardButton("فهرست پکیج ها ",callback_data=str(SHOW_PACKAGES))
       ],
       [
         InlineKeyboardButton("پشتیبانی",url="https://t.me/DadeCrimson"),
@@ -758,7 +758,7 @@ async def show_packages(update : Update ,context : ContextTypes.DEFAULT_TYPE) ->
     [InlineKeyboardButton("پکیج صفر تا صد نقاشی چهره",callback_data=str(SEFR_TA_SAD))],
     [InlineKeyboardButton("پکیج پوست",callback_data=str(POOST))],
     [InlineKeyboardButton("پکیج تک چهره دختر",callback_data=str(TAK_CHEHRE))],
-    [InlineKeyboardButton("پکیج تک چهره زین",callback_data=str(ZEIN))],
+    [InlineKeyboardButton("پکیج تک چهره پسر",callback_data=str(ZEIN))],
     [InlineKeyboardButton("بازگشت",callback_data=str(BACK))]
     
   ]
@@ -863,9 +863,9 @@ async def sefr_ta_sad_home(update : Update ,context : ContextTypes.DEFAULT_TYPE)
   query = update.callback_query
   await query.answer()
   await query.message.reply_photo(photo="sefr_ta_sad.jpg",caption=text_main,reply_markup=reply_markup)
-  await query.message.reply_photo(photo="term1.jpg",caption=text_t1,reply_markup=reply_markup)
-  await query.message.reply_photo(photo="term2.jpg",caption=text_t2,reply_markup=reply_markup)
-  await query.message.reply_photo(photo="term3.jpg",caption=text_t3,reply_markup=reply_markup)
+  # await query.message.reply_photo(photo="term1.jpg",caption=text_t1,reply_markup=reply_markup)
+  # await query.message.reply_photo(photo="term2.jpg",caption=text_t2,reply_markup=reply_markup)
+  # await query.message.reply_photo(photo="term3.jpg",caption=text_t3,reply_markup=reply_markup)
   return SELECTION
   
   
@@ -1509,7 +1509,7 @@ async def code_takhfif(update:Update,context:ContextTypes.DEFAULT_TYPE) -> str :
   if message == "0T100-1" or message == "0T100-2" or message == "0T100-3":
     context.user_data[PRICE_T]= context.user_data[PRICE] * 0.44
   elif message == "POOST-1" or message == "POOST-2" or message == "POOST-3":
-    context.user_data[PRICE_T] = context.user_data[PRICE] * 0.55  
+    context.user_data[PRICE_T] = context.user_data[PRICE] * 0.50  
   elif message == "TKH-1" or message == "TKH-2" or message == "TKH-3":
     context.user_data[PRICE_T] = context.user_data[PRICE] * 0.70
   elif message == "ZEIN-1" or message == "ZEIN-2" or message == "ZEIN-3": 
@@ -1558,6 +1558,8 @@ async def button_callback(update:Update,context:ContextTypes.DEFAULT_TYPE) -> st
   if package == "tak_chehre":
     keyboard = [
       [InlineKeyboardButton("لینک گروه تک چهره",url="https://t.me/+zNjvj8YebyQ5MjU0")],
+      [InlineKeyboardButton("گروه رفع اشکال تک چهره", url="https://t.me/+3xWChykCNLY1ZDk0")],
+      [InlineKeyboardButton("دریافت کد هنرجویی",url="https://t.me/DadeCrimson")],
       [InlineKeyboardButton("بازگشت",callback_data=str(BACK))]
     ]
   elif package == "sefr_ta_sad":
@@ -1566,78 +1568,99 @@ async def button_callback(update:Update,context:ContextTypes.DEFAULT_TYPE) -> st
       [InlineKeyboardButton("لینک گروه آپدیت ترم اول ",url="https://t.me/+YhaxpPztbBI4MzRk")],
       [InlineKeyboardButton("لینک گروه ترم دوم ",url="https://t.me/+DMM_XeNZlxc1NzY0")],
       [InlineKeyboardButton("لینک گروه ترم سوم ",url="https://t.me/+99h5iMpcQgc4ZjE0")],
+      [InlineKeyboardButton("گروه رفع اشکال ", url="https://t.me/+FPXzwiSZ3Zs1YmI0")],
+      [InlineKeyboardButton("دریافت کد هنرجویی",url="https://t.me/DadeCrimson")],
       [InlineKeyboardButton("بارگشت",callback_data=str(BACK))]
     ]
   elif package =="Zein_TakChehre":
     keyboard = [
       [InlineKeyboardButton("لینک گروه تک چهره زین ",url="https://t.me/+otiOts5uoNA5OTA8")],
+      [InlineKeyboardButton("دریافت کد هنرجویی",url="https://t.me/DadeCrimson")],
       [InlineKeyboardButton("بازگشت",callback_data=str(BACK))]
     ]
   elif package == "term_1":
     keyboard = [
       [InlineKeyboardButton("لینک گروه آپدیت ترم اول ",url="https://t.me/+1buEEob9ZMZiNGY0")],
       [InlineKeyboardButton("لینک گروه ترم اول ",url="https://t.me/+YhaxpPztbBI4MzRk")],
+      [InlineKeyboardButton("گروه رفع اشکال ", url="https://t.me/+FPXzwiSZ3Zs1YmI0")],
+      [InlineKeyboardButton("دریافت کد هنرجویی",url="https://t.me/DadeCrimson")],
       [InlineKeyboardButton("بازگشت",callback_data=str(BACK))]
     ]
   elif package == "term_2":
     keyboard = [
       [InlineKeyboardButton("لینک گروه ترم دوم ",url="https://t.me/+DMM_XeNZlxc1NzY0")],
+      [InlineKeyboardButton("گروه رفع اشکال ", url="https://t.me/+FPXzwiSZ3Zs1YmI0")],
+      [InlineKeyboardButton("دریافت کد هنرجویی",url="https://t.me/DadeCrimson")],
       [InlineKeyboardButton("بازگشت",callback_data=str(BACK))]
     ]
   elif package == "term_3":
     keyboard = [
       [InlineKeyboardButton("لینک گروه ترم سوم ",url="https://t.me/+99h5iMpcQgc4ZjE0")],
+      [InlineKeyboardButton("گروه رفع اشکال ", url="https://t.me/+FPXzwiSZ3Zs1YmI0")],
+      [InlineKeyboardButton("دریافت کد هنرجویی",url="https://t.me/DadeCrimson")],
       [InlineKeyboardButton("بازگشت",callback_data=str(BACK))]
     ]
   elif package == "cheshm_3rokh":
     keyboard = [
       [InlineKeyboardButton("لینک گروه جشم سه رخ ",url="https://t.me/+HdHDLoerKTZlNjg8")],
+      [InlineKeyboardButton("دریافت کد هنرجویی",url="https://t.me/DadeCrimson")],
       [InlineKeyboardButton("بازگشت",callback_data=str(BACK))]
     ]
   elif package == "bini":
     keyboard = [
       [InlineKeyboardButton("لینک گروه بینی تمام رخ ",url="https://t.me/+eGoKoKWLsSUwYmE8")],
+      [InlineKeyboardButton("دریافت کد هنرجویی",url="https://t.me/DadeCrimson")],
       [InlineKeyboardButton("بازگشت",callback_data=str(BACK))]
     ]
   elif package == "bini_3rokh":
     keyboard = [
       [InlineKeyboardButton("لینک گروه بینی سه رخ ",url="https://t.me/+kYwuy2X4Y185NDFk")],
+      [InlineKeyboardButton("دریافت کد هنرجویی",url="https://t.me/DadeCrimson")],
       [InlineKeyboardButton("بازگشت",callback_data=str(BACK))]
     ]
   elif package == "bini_pir":
     keyboard = [
       [InlineKeyboardButton("لینک گروه بینی پیر ",url="https://t.me/+SGH5EQkExaliZDY0")],
+      [InlineKeyboardButton("دریافت کد هنرجویی",url="https://t.me/DadeCrimson")],
       [InlineKeyboardButton("بازگشت",callback_data=str(BACK))]
     ]
   elif package == "lab_asali":
     keyboard = [
       [InlineKeyboardButton("لینک گروه لب عسلی ",url="https://t.me/+UupKG9E-kME2OTNk")],
+      [InlineKeyboardButton("دریافت کد هنرجویی",url="https://t.me/DadeCrimson")],
       [InlineKeyboardButton("بازگشت",callback_data=str(BACK))]
     ]
   elif package == "lab_almasi":
     keyboard = [
       [InlineKeyboardButton("لینک گروه لب الماسی ",url="https://t.me/+Ih5LQ93iofw0YjU0")],
+      [InlineKeyboardButton("دریافت کد هنرجویی",url="https://t.me/DadeCrimson")],
       [InlineKeyboardButton("بازگشت",callback_data=str(BACK))]
     ]
   elif package == "lab":
     keyboard = [
       [InlineKeyboardButton("لینک گروه لب خندان ",url="https://t.me/+SSzHyF-XdYYxMWRk")],
+      [InlineKeyboardButton("دریافت کد هنرجویی",url="https://t.me/DadeCrimson")],
       [InlineKeyboardButton("بازگشت",callback_data=str(BACK))]
     ]
   elif package == "starter":
     keyboard = [
       [InlineKeyboardButton("لینک گروه استارتر",url="https://t.me/+fcvSvAxfGYA5ODk0")],
+      [InlineKeyboardButton("دریافت کد هنرجویی",url="https://t.me/DadeCrimson")],
       [InlineKeyboardButton("بازگشت",callback_data=str(BACK))]
     ]
   elif package == "pishrafte":
     keyboard = [
       [InlineKeyboardButton("لینک گروه پیشرفته ",url="https://t.me/+IwMGEazEyVdlNjQ0")],
+      [InlineKeyboardButton("دریافت کد هنرجویی",url="https://t.me/DadeCrimson")],
+      [InlineKeyboardButton("گروه رفع اشکال ", url="https://t.me/+K0YTQmJ7NhtmZDdk")],
       [InlineKeyboardButton("بازگشت",callback_data=str(BACK))]
     ]
   elif package == "poost":
     keyboard = [
       [InlineKeyboardButton("لینک گروه استارتر",url="https://t.me/+fcvSvAxfGYA5ODk0")],
       [InlineKeyboardButton("لینک گروه پیشرفته ",url="https://t.me/+IwMGEazEyVdlNjQ0")],
+      [InlineKeyboardButton("دریافت کد هنرجویی",url="https://t.me/DadeCrimson")],
+      [InlineKeyboardButton("گروه رفع اشکال ", url="https://t.me/+K0YTQmJ7NhtmZDdk")],
       [InlineKeyboardButton("بازگشت",callback_data=str(BACK))]
     ]  
   else:
@@ -1651,8 +1674,20 @@ async def button_callback(update:Update,context:ContextTypes.DEFAULT_TYPE) -> st
     
   reply_markup = InlineKeyboardMarkup(keyboard)
   if data[0] == "accept":
+    text = '''
+    سلام.
+فیش واریزی شما توسط ادمین تایید شد و در پایین این پیام  لینک گروه ها قرار دارد.✨
+❌برای دریافت کد هنرجویی خودتون از طریق دکمه کد هنرجویی به ادمین پیام بدید تا کد خودتون رو دریافت کنید.❌
+
+⚠️مواردی در مورد رفع اشکال:
+_رفع اشکال شما توسط ثمین و مریم انجام میشه 
+_رفع اشکال آموزش ما رایگانه و پولی بابتش دریافت نمیشه.
+_ممکنه که به علت حجم بالای پیام ها دیرتر کارتون رفع اشکال بشه به علت اینکه ما دو نفریم و رسیدگی به پیام ها طول میکشه.
+_کارهایی که جدا از آموزش برای خودتون انجام میدین رفع اشکال نمیشه. 
+    '''
     await query.answer("خرید پذیرفته شد")
-    await bot.send_message(chat_id=user_id,text="فیش ارسالی شما با موفقیت توسط ادمین تأیید شد و لینک های گروه ها به صورت خودکار برای شما ارسال خواهد شد\nممنون از اعتماد و خرید شما\nدر صورتی که میخواهید دوباره از ربات استفاده کنید کلمه /start را ارسال کنید.",reply_markup=reply_markup)
+    await bot.send_message(chat_id=user_id,text=text,reply_markup=reply_markup)
+    await bot.send_photo(chat_id=user_id,photo="list.jpg",caption="لیست لوازم مورد نیاز")
     return SHOW_LINKS
   else :  
     keyboard = [[InlineKeyboardButton("بازگشت",callback_data=str(BACK))]]
