@@ -3,9 +3,9 @@ from telegram import InlineKeyboardButton,InlineKeyboardMarkup , KeyboardButton 
 from telegram.ext import PicklePersistence,Application,CallbackQueryHandler,CommandHandler,MessageHandler,ContextTypes, ConversationHandler,CallbackContext, filters
 import re
 
-os.environ['HTTP_PROXY'] = '127.0.0.1:9119'
-os.environ['HTTPS_PROXY'] = '127.0.0.1:9119'
-os.environ['SOCKS_PROXY'] = '127.0.0.1:9150'
+# os.environ['HTTP_PROXY'] = '127.0.0.1:9119'
+# os.environ['HTTPS_PROXY'] = '127.0.0.1:9119'
+# os.environ['SOCKS_PROXY'] = '127.0.0.1:9150'
 token = "6217084586:AAEwIqqQjfSyKlxxmTGUSWrCoJyhV7q_wko"
 bot = telegram.Bot(token=token)
 
@@ -58,7 +58,11 @@ END = ConversationHandler.END
   PRICE,
   URL,
   STOP,
-  PRICE_T)=map(chr,range(0,39))
+  PRICE_T,
+  MAIN_HOME,
+  JASHNVARE,
+  BUY_J,
+  )=map(chr,range(0,42))
   
 ( BUY_TERM_1,
   BUY_TERM2,
@@ -116,46 +120,51 @@ END = ConversationHandler.END
 
 
 async def start(update:Update, context: ContextTypes.DEFAULT_TYPE) -> str :
-    keyboard = [
-        [
-          InlineKeyboardButton("فهرست پکیج ",callback_data=str(SHOW_PACKAGES))
-        ],
-        [
-          InlineKeyboardButton("پشتیبانی",url="https://t.me/DadeCrimson"),
-          InlineKeyboardButton("پشتیبانی ۲",url="https://t.me/pintoreal"),
-          InlineKeyboardButton("خروج", callback_data=str(END))
-        ] 
-    ]
-    reply_markup = InlineKeyboardMarkup(keyboard)
-    text = """
+  keyboard = [
+      [
+        InlineKeyboardButton("لیست دوره های آموزشی ",callback_data=str(SHOW_PACKAGES))
+      ],
+      [InlineKeyboardButton("⭐️جشنواره⭐️",callback_data="JASHNVARE")],
+      [
+        InlineKeyboardButton("پشتیبانی",url="https://t.me/DadeCrimson"),
+        InlineKeyboardButton("پشتیبانی ۲",url="https://t.me/pintoreal"),
+        InlineKeyboardButton("خروج", callback_data=str(END))
+      ]  
+  ]
+     
+  reply_markup = InlineKeyboardMarkup(keyboard)
+  text = """
     سلام هنرجوی عزیز✨ 
 خیلی خوش حالیم که تیم آموزشی ما رو انتخاب کردی 😍🌱
+
+🔸از بخش جشنواره میتونی توی جشنواره آخر سال شرکت کنی    
  
-🔸از بخش فهرست پکیج ها میتونی لیست دوره هامونو ببینی✨  
+🔸از بخش فهرست میتونی لیست دوره هامونو ببینی✨  
 
 🔸برای ثبت نام و اطلاعات راجع به هر دوره روی اسمش کلیک کن و مراحل ثبت نام رو دنبال کن✨
 
 🔸اگر مشکلی در اجرای ربات پیدا کردی و یا دکمه ای رو زدی کار نکرد میتونی دکمه ***** برگشت ***** رو بزنی و یا با نوشتن /start ربات رو دوباره اجرا کنی
 
 🔸برای ارتباط با ادمین ها هم میتونی از  طریق دکمه های پشتیبانی اقدام کنی🍓
-"""
-    user = update.message.from_user
-    context.user_data[ID] = user.id
-    logger.info("user %s start the bot",user.first_name)
-    chat_id = update.message.chat_id
-    await update.message.reply_text(text=text,reply_markup=reply_markup)
+  """
+  user = update.message.from_user
+  context.user_data[ID] = user.id
+  logger.info("user %s start the bot",user.first_name)
+  chat_id = update.message.chat_id
+  await update.message.reply_text(text=text,reply_markup=reply_markup)
     
       
       
-    return HOME
+  return HOME
 
  
 async def start_over(update:Update, context: ContextTypes.DEFAULT_TYPE) -> str :
   
   keyboard = [
       [
-        InlineKeyboardButton("فهرست پکیج ها ",callback_data=str(SHOW_PACKAGES))
+        InlineKeyboardButton("لیست دوره های آموزشی ",callback_data=str(SHOW_PACKAGES))
       ],
+      [InlineKeyboardButton("⭐️جشنواره⭐️",callback_data="JASHNVARE")],
       [
         InlineKeyboardButton("پشتیبانی",url="https://t.me/DadeCrimson"),
         InlineKeyboardButton("پشتیبانی ۲",url="https://t.me/pintoreal"),
@@ -167,8 +176,10 @@ async def start_over(update:Update, context: ContextTypes.DEFAULT_TYPE) -> str :
   text = """
     سلام هنرجوی عزیز✨ 
 خیلی خوش حالیم که تیم آموزشی ما رو انتخاب کردی 😍🌱
+
+🔸از بخش جشنواره میتونی توی جشنواره آخر سال شرکت کنی    
  
-🔸از بخش فهرست پکیج میتونی لیست دوره هامونو ببینی✨  
+🔸از بخش فهرست میتونی لیست دوره هامونو ببینی✨  
 
 🔸برای ثبت نام و اطلاعات راجع به هر دوره روی اسمش کلیک کن و مراحل ثبت نام رو دنبال کن✨
 
@@ -186,6 +197,7 @@ async def start_over(update:Update, context: ContextTypes.DEFAULT_TYPE) -> str :
 async def term_1_home(update:Update, context: ContextTypes.DEFAULT_TYPE) -> str :
   keyboard = [[InlineKeyboardButton("ثبت نام ترم اول",callback_data="BUY")],
     [InlineKeyboardButton("چشم سه رخ",callback_data=str(CHESHM_3ROKH))],
+    [InlineKeyboardButton("صفحه اصلی",callback_data=str(MAIN_HOME))],
     [InlineKeyboardButton("بازگشت",callback_data=str(BACK))]
   ]
   
@@ -229,6 +241,7 @@ async def term_2_home(update:Update , context:ContextTypes.DEFAULT_TYPE) -> str 
     [InlineKeyboardButton(text="بینی ساده",callback_data=str(BINI)),InlineKeyboardButton("لب ساده",callback_data=str(LAB))],
     [InlineKeyboardButton(text="بینی سه رخ",callback_data=str(BINI_3ROKH)),InlineKeyboardButton(text="لب الماسی",callback_data=str(LAB_ALMASI))],
     [InlineKeyboardButton(text="بینی پیر",callback_data=str(BINI_PIR)),InlineKeyboardButton(text="لب عسلی",callback_data=str(LAB_ASALI))],
+    [InlineKeyboardButton("صفحه اصلی",callback_data=str(MAIN_HOME))],
     [InlineKeyboardButton("بازگشت",callback_data=str(BACK))]
   ]
   
@@ -270,6 +283,7 @@ async def term_3_home(update:Update , context: ContextTypes.DEFAULT_TYPE) -> str
     [InlineKeyboardButton( "تناژ مو سیاه", callback_data=str(TONAZH_MOO_SIAH)),InlineKeyboardButton("تناژ مو قهوه ای",callback_data=str(TONAZH_MOO_GHAHVEI))],
     [InlineKeyboardButton("مو تیلور", callback_data=str(MOO_TAYLOR))],
     [InlineKeyboardButton("مو شینیون", callback_data=str(MOO_SHINION)),InlineKeyboardButton("مو پسر", callback_data=str(MOO_PESAR))],
+    [InlineKeyboardButton("صفحه اصلی",callback_data=str(MAIN_HOME))],
     [InlineKeyboardButton("بازگشت",callback_data=str(BACK))]
   ]
   
@@ -324,6 +338,7 @@ async def term_3_home(update:Update , context: ContextTypes.DEFAULT_TYPE) -> str
 async def cheshm_3rokh(update:Update,context : ContextTypes.DEFAULT_TYPE) -> str:
   keyboard = [
     [InlineKeyboardButton("ثبت نام چشم سه رح", callback_data=str(BUY_CHESHM_3ROKH))],
+    [InlineKeyboardButton("صفحه اصلی",callback_data=str(MAIN_HOME))],
     [InlineKeyboardButton("بازگشت",callback_data=str(BACK))]
     
 
@@ -353,6 +368,7 @@ async def cheshm_3rokh(update:Update,context : ContextTypes.DEFAULT_TYPE) -> str
 async def bini(update:Update,context : ContextTypes.DEFAULT_TYPE) -> str:
   keyboard = [
     [InlineKeyboardButton("ثبت نام بینی", callback_data=str(BUY_BINI))],
+    [InlineKeyboardButton("صفحه اصلی",callback_data=str(MAIN_HOME))],
     [InlineKeyboardButton("بازگشت",callback_data=str(BACK))]
     
 
@@ -380,6 +396,7 @@ async def bini(update:Update,context : ContextTypes.DEFAULT_TYPE) -> str:
 async def bini_3rokh(update:Update,context : ContextTypes.DEFAULT_TYPE) -> str:
   keyboard = [
     [InlineKeyboardButton("ثبت نام بینی سه رخ", callback_data=str(BUY_BINI_3ROKH))],
+    [InlineKeyboardButton("صفحه اصلی",callback_data=str(MAIN_HOME))],
     [InlineKeyboardButton("بازگشت",callback_data=str(BACK))]
     
 
@@ -406,6 +423,7 @@ async def bini_3rokh(update:Update,context : ContextTypes.DEFAULT_TYPE) -> str:
 async def bini_pir(update:Update,context : ContextTypes.DEFAULT_TYPE) -> str:
   keyboard = [
     [InlineKeyboardButton("ثبت نام بینی پیر", callback_data=str(BUY_BINI_PIR))],
+    [InlineKeyboardButton("صفحه اصلی",callback_data=str(MAIN_HOME))],
     [InlineKeyboardButton("بازگشت",callback_data=str(BACK))]
     
 
@@ -439,6 +457,7 @@ async def bini_pir(update:Update,context : ContextTypes.DEFAULT_TYPE) -> str:
 async def lab(update:Update,context : ContextTypes.DEFAULT_TYPE) -> str:
   keyboard = [
     [InlineKeyboardButton("ثبت نام لب", callback_data=str(BUY_LAB))],
+    [InlineKeyboardButton("صفحه اصلی",callback_data=str(MAIN_HOME))],
     [InlineKeyboardButton("بازگشت",callback_data=str(BACK))]
     
 
@@ -467,6 +486,7 @@ async def lab(update:Update,context : ContextTypes.DEFAULT_TYPE) -> str:
 async def lab_almasi(update:Update,context : ContextTypes.DEFAULT_TYPE) -> str:
   keyboard = [
     [InlineKeyboardButton("ثبت نام لب الماسی", callback_data=str(BUY_LAB_ALMASI))],
+    [InlineKeyboardButton("صفحه اصلی",callback_data=str(MAIN_HOME))],
     [InlineKeyboardButton("بازگشت",callback_data=str(BACK))]
     
 
@@ -497,6 +517,7 @@ async def lab_almasi(update:Update,context : ContextTypes.DEFAULT_TYPE) -> str:
 async def lab_asali(update:Update,context : ContextTypes.DEFAULT_TYPE) -> str:
   keyboard = [
     [InlineKeyboardButton("ثبت نام لب عسلی", callback_data=str(BUY_LAB_ASALI))],
+    [InlineKeyboardButton("صفحه اصلی",callback_data=str(MAIN_HOME))],
     [InlineKeyboardButton("بازگشت",callback_data=str(BACK))]
     
 
@@ -532,6 +553,7 @@ async def lab_asali(update:Update,context : ContextTypes.DEFAULT_TYPE) -> str:
 async def tonazh_moo_ghahvei(update:Update,context : ContextTypes.DEFAULT_TYPE) -> str:
   keyboard = [
     [InlineKeyboardButton(" ثبت نام تناژ مو قهوه ای", callback_data=str(BUY_TONAZH_MOO_GHAHVEI))],
+    [InlineKeyboardButton("صفحه اصلی",callback_data=str(MAIN_HOME))],
     [InlineKeyboardButton("بازگشت",callback_data=str(BACK))]
     
 
@@ -563,6 +585,7 @@ async def tonazh_moo_ghahvei(update:Update,context : ContextTypes.DEFAULT_TYPE) 
 async def tonazh_moo_siah(update:Update,context : ContextTypes.DEFAULT_TYPE) -> str:
   keyboard = [
     [InlineKeyboardButton(" ثبت نام تناژ مو سیاه", callback_data=str(BUY_TONAZH_MOO_SIAH))],
+    [InlineKeyboardButton("صفحه اصلی",callback_data=str(MAIN_HOME))],
     [InlineKeyboardButton("بازگشت",callback_data=str(BACK))]
     
 
@@ -597,6 +620,7 @@ async def tonazh_moo_siah(update:Update,context : ContextTypes.DEFAULT_TYPE) -> 
 async def moo_taylor(update:Update,context : ContextTypes.DEFAULT_TYPE) -> str:
   keyboard = [
     [InlineKeyboardButton("ثبت نام موی تیلور", callback_data=str(BUY_MOO_TAYLOR))],
+    [InlineKeyboardButton("صفحه اصلی",callback_data=str(MAIN_HOME))],
     [InlineKeyboardButton("بازگشت",callback_data=str(BACK))]
     
 
@@ -628,6 +652,7 @@ async def moo_taylor(update:Update,context : ContextTypes.DEFAULT_TYPE) -> str:
 async def moo_shinion(update:Update,context : ContextTypes.DEFAULT_TYPE) -> str:
   keyboard = [
     [InlineKeyboardButton("ثبت نام موی شینیون", callback_data=str(BUY_MOO_SHINION))],
+    [InlineKeyboardButton("صفحه اصلی",callback_data=str(MAIN_HOME))],
     [InlineKeyboardButton("بازگشت",callback_data=str(BACK))]
     
 
@@ -658,6 +683,7 @@ async def moo_shinion(update:Update,context : ContextTypes.DEFAULT_TYPE) -> str:
 async def moo_pesar(update:Update,context : ContextTypes.DEFAULT_TYPE) -> str:
   keyboard = [
     [InlineKeyboardButton("ثبت نام موی پسر", callback_data=str(BUY_MOO_PESAR))],
+    [InlineKeyboardButton("صفحه اصلی",callback_data=str(MAIN_HOME))],
     [InlineKeyboardButton("بازگشت",callback_data=str(BACK))]
     
 
@@ -685,8 +711,9 @@ async def moo_pesar(update:Update,context : ContextTypes.DEFAULT_TYPE) -> str:
 
 async def starter_home(update:Update, context: ContextTypes.DEFAULT_TYPE) -> str :
   keyboard = [
+    [InlineKeyboardButton("خرید پکیج استارتر",callback_data=str(BUY_STARTER))],
+    [InlineKeyboardButton("صفحه اصلی",callback_data=str(MAIN_HOME))],
     [InlineKeyboardButton("بازگشت",callback_data=str(BACK))],
-    [InlineKeyboardButton("خرید پکیج استارتر",callback_data=str(BUY_STARTER))]
   ]
   
   reply_markup = InlineKeyboardMarkup(keyboard)
@@ -720,8 +747,9 @@ async def starter_home(update:Update, context: ContextTypes.DEFAULT_TYPE) -> str
   
 async def pishrafte_home(update:Update, context: ContextTypes.DEFAULT_TYPE) -> str :
   keyboard = [
-    [InlineKeyboardButton("بازگشت",callback_data=str(BACK))],
     [InlineKeyboardButton("خرید پکیج پیشرفته",callback_data=str(BUY_PISHRAFTE))]
+    [InlineKeyboardButton("صفحه اصلی",callback_data=str(MAIN_HOME))],
+    [InlineKeyboardButton("بازگشت",callback_data=str(BACK))],
   ]
   
   reply_markup = InlineKeyboardMarkup(keyboard)
@@ -755,10 +783,12 @@ async def pishrafte_home(update:Update, context: ContextTypes.DEFAULT_TYPE) -> s
   
 async def show_packages(update : Update ,context : ContextTypes.DEFAULT_TYPE) -> str :
   keyboard = [
-    [InlineKeyboardButton("پکیج صفر تا صد نقاشی چهره",callback_data=str(SEFR_TA_SAD))],
-    [InlineKeyboardButton("پکیج پوست",callback_data=str(POOST))],
-    [InlineKeyboardButton("پکیج تک چهره دختر",callback_data=str(TAK_CHEHRE))],
-    [InlineKeyboardButton("پکیج تک چهره پسر",callback_data=str(ZEIN))],
+    [InlineKeyboardButton("⭐️جشنواره⭐️",callback_data="JASHNVARE")],
+    [InlineKeyboardButton("دوره صفر تا صد نقاشی چهره",callback_data=str(SEFR_TA_SAD))],
+    [InlineKeyboardButton("دوره أموزش بافت پوست",callback_data=str(POOST))],
+    [InlineKeyboardButton("دوره آموزش تک چهره دختر",callback_data=str(TAK_CHEHRE))],
+    [InlineKeyboardButton("دوره أموزش تک چهره پسر",callback_data=str(ZEIN))],
+    [InlineKeyboardButton("صفحه اصلی",callback_data=str(MAIN_HOME))],
     [InlineKeyboardButton("بازگشت",callback_data=str(BACK))]
     
   ]
@@ -767,19 +797,18 @@ async def show_packages(update : Update ,context : ContextTypes.DEFAULT_TYPE) ->
   query = update.callback_query
   text = '''
   
-  🍓فهرست دوره ها:
-این لیست دوره های اصلیمونِ ✨
+  🍓فهرست کلاس های آموزشی:
 
-🔶 دوره صفر تا صد نقاشی چهره
+🔶 کلاس طراحی  صفر تا صد نقاشی چهره
 (شامل ۳ ترم فشرده از مبتدی تا حرفه ای) 
 
-🔶 پکیج تک چهره دختر
+🔶 دوره آموزش تک چهره دختر دختر
 (بیش از 18  ساعت آموزش جزء به جزء یک مدل دختر)
 
-🔶 پکیج تک چهره پسر
+🔶 دوره آموزش طراحی تک چهره پسر
 (آموزش جزء به جزء ریش و مو یک مدل پسر )
 
-🔶 پکیج پوست
+🔶 کلاس طراحی انواع بافت پوست
 (شامل ۲ بخش استارتر و پیشرفته برای افراد مبتدی تا حرفه ای، مختص یادگیری انواع بافت و تناژ پوست)
 
 برای اطلاعات بیشتر راجع به هر دوره روی اسم دوره کلیک کن✨🪄
@@ -794,10 +823,11 @@ async def show_packages(update : Update ,context : ContextTypes.DEFAULT_TYPE) ->
   
 async def sefr_ta_sad_home(update : Update ,context : ContextTypes.DEFAULT_TYPE) -> str :
   keyboard = [
-    [InlineKeyboardButton("خرید پکیج صفر تا صد نقاشی چهره",callback_data=str(BUY_SEFR_TA_SAD))],
+    [InlineKeyboardButton("ثبت نام دوره صفر تا صد نقاشی چهره",callback_data=str(BUY_SEFR_TA_SAD))],
     [InlineKeyboardButton("ترم اول",callback_data=str(TERM_1)),
     InlineKeyboardButton("ترم دوم",callback_data=str(TERM_2)),
     InlineKeyboardButton("ترم سوم",callback_data=str(TERM_3))],
+    [InlineKeyboardButton("صفحه اصلی",callback_data=str(MAIN_HOME))],
     [InlineKeyboardButton("بازگشت",callback_data=str(BACK))]
     
   ]
@@ -872,7 +902,8 @@ async def sefr_ta_sad_home(update : Update ,context : ContextTypes.DEFAULT_TYPE)
    
 async def tak_chehre_home(update : Update ,context : ContextTypes.DEFAULT_TYPE) -> str :
   keyboard = [
-    [InlineKeyboardButton("ثبت نام پکیج تک چهره دختر",callback_data=str(BUY_TAK_CHEHRE))],
+    [InlineKeyboardButton("ثبت نام دوره تک چهره دختر",callback_data=str(BUY_TAK_CHEHRE))],
+    [InlineKeyboardButton("صفحه اصلی",callback_data=str(MAIN_HOME))],
     [InlineKeyboardButton("بازگشت",callback_data=str(BACK))]
     
   ]
@@ -902,6 +933,7 @@ async def tak_chehre_home(update : Update ,context : ContextTypes.DEFAULT_TYPE) 
 async def zein_home(update : Update ,context : ContextTypes.DEFAULT_TYPE) -> str :
   keyboard = [
     [InlineKeyboardButton("ثبت نام پکیج تک چهره زین",callback_data=str(BUY_ZEIN))],
+    [InlineKeyboardButton("صفحه اصلی",callback_data=str(MAIN_HOME))],
     [InlineKeyboardButton("بازگشت",callback_data=str(BACK))]
     
   ]
@@ -921,13 +953,47 @@ async def zein_home(update : Update ,context : ContextTypes.DEFAULT_TYPE) -> str
   await query.answer()
   await query.message.reply_photo(photo="Zein.jpg",caption=caption,reply_markup=reply_markup)
   return SELECTION
-  
+
+
+async def jashnvare_home(update : Update ,context : ContextTypes.DEFAULT_TYPE) -> str :
+ keyboard = [
+    [InlineKeyboardButton("ثبت نام ",callback_data="BUY_J")],
+    [InlineKeyboardButton("صفحه اصلی",callback_data=str(MAIN_HOME))],
+    [InlineKeyboardButton("بازگشت",callback_data=str(BACK))]
+ ]  
+
+ caption = '''
+ 🌟جشنواره پایان سال Pintoreal🌟
+
+با ثبت نام تو این جشنواره میتونید اصلی ترین دوره های ما رو تهیه کنید:
+-- دوره آموزش صفر تا صد طراحی با مداد رنگی
+-- دوره آموزش طراحی انواع پوست
+-- آموزش یک تکچهره در سطح حرفه ای 
+
+✨به همراه پشتیبانی و رفع اشکال تمرین های ارسالی
+
+قیمت اصلی دوره : ۵.۵۶۰.۰۰۰ تومان
+قیمت با تخفیف : ۱.۹۸۷.۰۰۰
+
+برای ثبت نام میتونید از کد تخفیف جشنواره استفاده کنید  فقط کافیه کلمه جشنواره رو بعد  از رفتن به بخش ثبت نام ارسال کنید💯
+ 
+
+ '''
+
+ reply_markup = InlineKeyboardMarkup(keyboard)
+ query = update.callback_query
+ await query.answer()
+ await query.message.reply_photo(photo="jashnvare.jpg",caption=caption,reply_markup=reply_markup)
+ return SELECTION
+
+ 
 
 async def poost_package_home(update : Update ,context : ContextTypes.DEFAULT_TYPE) -> str :
  keyboard = [
    [InlineKeyboardButton("ثبت نام پکیج پوست",callback_data=str(BUY_POOST))],
    [InlineKeyboardButton("پیشرفته",callback_data=str(PISHRAFTE))],
    [InlineKeyboardButton("استارتر",callback_data=str(STARTER))],
+   [InlineKeyboardButton("صفحه اصلی",callback_data=str(MAIN_HOME))],
    [InlineKeyboardButton("بازگشت",callback_data=str(BACK))]
    
 
@@ -1022,6 +1088,33 @@ async def buy_zein(update : Update , context : ContextTypes.DEFAULT_TYPE) -> str
   await query.message.reply_photo(photo="cardnumber.jpg",caption=text,reply_markup=reply_markup)
   return FORWARD_TO_ADMIN
 
+async def buy_jashnvare(update : Update , context : ContextTypes.DEFAULT_TYPE) -> str:
+  query = update.callback_query
+  context.user_data[PACKAGE] = "جشنواره"
+  context.user_data[PRICE] = 5540.000
+  context.user_data[PRICE_T] = 0
+  context.user_data[URL] = []
+  await query.answer()
+  keyboard = [[InlineKeyboardButton("بازگشت",callback_data=str(BACK))]]
+  text = f'''
+✨برای شرکت در جشنواره✨
+اگر کد تخفیف دارید آن را ارسال کنید و با قیمت تخفیف خورده ثبت نام کنید.
+در صورت نداشتن کد تخفیف
+لطفا مبلغ » {context.user_data[PRICE]:.۳f} 
+به شماره کارت ارسال شده به نام سرکار خانم مریم باقری  واریز نمایید.🙏🙏🙏
+
+❌توجه داشته باشید❌
+پس از واریز , فیش واریزی خود را در همین قسمت بفرستید تا برای ادمین ارسال شود.
+
+پس از تأیید فیش شما توسط ادمین لینک گروه ها به صورت خودکار برای شما ارسال خواهد شد.
+
+از صبر و شکیبایی شما ممنونیم.🧡✨
+  '''
+  reply_markup = InlineKeyboardMarkup(keyboard)
+  await query.message.reply_photo(photo="cardnumber.jpg",caption=text,reply_markup=reply_markup)
+  return FORWARD_TO_ADMIN
+
+
 async def buy_poost(update : Update , context : ContextTypes.DEFAULT_TYPE) -> str:
   query = update.callback_query
   context.user_data[PACKAGE] = "poost"
@@ -1031,6 +1124,7 @@ async def buy_poost(update : Update , context : ContextTypes.DEFAULT_TYPE) -> st
   await query.answer()
   keyboard = [[InlineKeyboardButton("بازگشت",callback_data=str(BACK))]]
   text = f'''
+
   برای خرید پکیج  » {context.user_data[PACKAGE]}
 لطفا مبلغ » {context.user_data[PRICE]:.3f} 
 به شماره کارت ارسال شده به نام سرکار خانم مریم باقری  واریز نمایید.🙏🙏🙏
@@ -1462,6 +1556,8 @@ async def forward_to_admin(update : Update , context : ContextTypes.DEFAULT_TYPE
   context.user_data[ID] = user_id
   package = context.user_data[PACKAGE]
   takhfif = context.user_data[PRICE_T]
+  keyboard2 = [[InlineKeyboardButton("صفحه اصلی",callback_data=str(MAIN_HOME))],[InlineKeyboardButton("پشتیبانی",url="https://t.me/pintoreal")]]
+  reply_markup2 = InlineKeyboardMarkup(keyboard2)
   
   reply_text = '''
   فیش ارسالی شما برای ادمین ارسال شد.
@@ -1471,7 +1567,7 @@ async def forward_to_admin(update : Update , context : ContextTypes.DEFAULT_TYPE
 به همراه نام و نام خانوادگی و پکیج خریداری شده برای پشتیبانی ارسال نمایید.
 از صبر و شکیبایی شما سپاسگزاریم.🧡💛
   '''
-  await update.message.reply_text(text=reply_text)
+  await update.message.reply_text(text=reply_text,reply_markup=reply_markup2)
   
   ACCEPT = str(f"accept {user_id} {package}")
   keyboard = [
@@ -1500,6 +1596,7 @@ async def code_takhfif(update:Update,context:ContextTypes.DEFAULT_TYPE) -> str :
            "TKH-1","TKH-2","TKH-3","ZEIN-1","ZEIN-2","ZEIN-3",
            "TRM1-1","TRM1-2","TRM1-3","TRM2-1","TRM2-2","TRM2-3","TRM3-1","TRM3-2","TRM3-3",
            "STARTER-1","STARTER-2","STARTER-3","PISHRAFTE-1","PISHRAFTE-2","PISHRAFTE-3",
+           "جشنواره"
            ]
   message = update.message.text
   print(message)
@@ -1522,24 +1619,28 @@ async def code_takhfif(update:Update,context:ContextTypes.DEFAULT_TYPE) -> str :
     context.user_data[PRICE_T] = context.user_data[PRICE] * 0.80
   elif message == "STARTER-1" or message == "STARTER-2" or message == "STARTER-3": 
     context.user_data[PRICE_T] = context.user_data[PRICE] * 0.60
+  elif message == "جشنواره" :
+    context.user_data[PRICE_T] = 1987.000
   elif message == "PISHRAFTE-1" or message == "PISHRAFTE-2" or message == "PISHRAFTE-3": 
     context.user_data[PRICE_T] = context.user_data[PRICE] * 0.55
 
   if context.user_data[PRICE_T] != 0 :
     
     text = f'''
-  برای خرید پکیج  » {context.user_data[PACKAGE]}
-لطفا مبلغ » {context.user_data[PRICE_T]:.3f} 
-به شماره کارت ارسال شده به نام سرکار خانم مریم باقری  واریز نمایید.🙏🙏🙏
+⚠️کد تخفیف شما اعمال شد⚠️
 
+لطفا مبلغ » {context.user_data[PRICE_T]:.3f} تومان
+به شماره کارت ارسال شده به نام سرکار خانم مریم باقری  واریز نمایید.🙏
 
+❌توجه داشته باشید❌
 پس از واریز , فیش واریزی خود را در همین قسمت بفرستید تا برای ادمین ارسال شود.
-پس از تأیید فیش شما توسط ادمین لینک گروه ها به صورت خودکار برای شما ارسال خواهد شد.
+
+پس از تأیید فیش شما توسط ادمین لینک گروه ها به صورت خودکار  تا ۲۴ ساعت آینده برای شما ارسال خواهد شد.
 
 از صبر و شکیبایی شما ممنونیم.🧡💛
   '''
   
-    await update.message.reply_text(text=text,reply_markup=reply_markup)
+    await update.message.reply_photo(photo="cardnumber.jpg",caption=text,reply_markup=reply_markup)
     return FORWARD_TO_ADMIN
   else :
     text = "کد تفیف ارسالی مورد تأیید نمیباشد.لطفا توجه داشته باشید که کد تخفیف را با حروف بزرگ ارسال نمایید"
@@ -1559,8 +1660,8 @@ async def button_callback(update:Update,context:ContextTypes.DEFAULT_TYPE) -> st
     keyboard = [
       [InlineKeyboardButton("لینک گروه تک چهره",url="https://t.me/+zNjvj8YebyQ5MjU0")],
       [InlineKeyboardButton("گروه رفع اشکال تک چهره", url="https://t.me/+3xWChykCNLY1ZDk0")],
-      [InlineKeyboardButton("دریافت کد هنرجویی",url="https://t.me/DadeCrimson")],
-      [InlineKeyboardButton("بازگشت",callback_data=str(BACK))]
+      [InlineKeyboardButton("دریافت کد هنرجویی",url="https://t.me/pintoreal")],
+      [InlineKeyboardButton("صفحه اصلی",callback_data=str(MAIN_HOME))],
     ]
   elif package == "sefr_ta_sad":
     keyboard = [
@@ -1569,104 +1670,118 @@ async def button_callback(update:Update,context:ContextTypes.DEFAULT_TYPE) -> st
       [InlineKeyboardButton("لینک گروه ترم دوم ",url="https://t.me/+DMM_XeNZlxc1NzY0")],
       [InlineKeyboardButton("لینک گروه ترم سوم ",url="https://t.me/+99h5iMpcQgc4ZjE0")],
       [InlineKeyboardButton("گروه رفع اشکال ", url="https://t.me/+FPXzwiSZ3Zs1YmI0")],
-      [InlineKeyboardButton("دریافت کد هنرجویی",url="https://t.me/DadeCrimson")],
-      [InlineKeyboardButton("بارگشت",callback_data=str(BACK))]
+      [InlineKeyboardButton("دریافت کد هنرجویی",url="https://t.me/pintoreal")],
+      [InlineKeyboardButton("صفحه اصلی",callback_data=str(MAIN_HOME))],
     ]
   elif package =="Zein_TakChehre":
     keyboard = [
       [InlineKeyboardButton("لینک گروه تک چهره زین ",url="https://t.me/+otiOts5uoNA5OTA8")],
-      [InlineKeyboardButton("دریافت کد هنرجویی",url="https://t.me/DadeCrimson")],
-      [InlineKeyboardButton("بازگشت",callback_data=str(BACK))]
+      [InlineKeyboardButton("دریافت کد هنرجویی",url="https://t.me/pintoreal")],
+      [InlineKeyboardButton("صفحه اصلی",callback_data=str(MAIN_HOME))],
     ]
   elif package == "term_1":
     keyboard = [
       [InlineKeyboardButton("لینک گروه آپدیت ترم اول ",url="https://t.me/+1buEEob9ZMZiNGY0")],
       [InlineKeyboardButton("لینک گروه ترم اول ",url="https://t.me/+YhaxpPztbBI4MzRk")],
       [InlineKeyboardButton("گروه رفع اشکال ", url="https://t.me/+FPXzwiSZ3Zs1YmI0")],
-      [InlineKeyboardButton("دریافت کد هنرجویی",url="https://t.me/DadeCrimson")],
-      [InlineKeyboardButton("بازگشت",callback_data=str(BACK))]
+      [InlineKeyboardButton("دریافت کد هنرجویی",url="https://t.me/pintoreal")],
+      [InlineKeyboardButton("صفحه اصلی",callback_data=str(MAIN_HOME))],
     ]
   elif package == "term_2":
     keyboard = [
       [InlineKeyboardButton("لینک گروه ترم دوم ",url="https://t.me/+DMM_XeNZlxc1NzY0")],
       [InlineKeyboardButton("گروه رفع اشکال ", url="https://t.me/+FPXzwiSZ3Zs1YmI0")],
-      [InlineKeyboardButton("دریافت کد هنرجویی",url="https://t.me/DadeCrimson")],
-      [InlineKeyboardButton("بازگشت",callback_data=str(BACK))]
+      [InlineKeyboardButton("دریافت کد هنرجویی",url="https://t.me/pintoreal")],
+      [InlineKeyboardButton("صفحه اصلی",callback_data=str(MAIN_HOME))],
     ]
   elif package == "term_3":
     keyboard = [
-      [InlineKeyboardButton("لینک گروه ترم سوم ",url="https://t.me/+99h5iMpcQgc4ZjE0")],
-      [InlineKeyboardButton("گروه رفع اشکال ", url="https://t.me/+FPXzwiSZ3Zs1YmI0")],
-      [InlineKeyboardButton("دریافت کد هنرجویی",url="https://t.me/DadeCrimson")],
-      [InlineKeyboardButton("بازگشت",callback_data=str(BACK))]
+      [InlineKeyboardButton("دریافت کد هنرجویی",url="https://t.me/pintoreal")],
+      [InlineKeyboardButton("صفحه اصلی",callback_data=str(MAIN_HOME))],
     ]
   elif package == "cheshm_3rokh":
     keyboard = [
       [InlineKeyboardButton("لینک گروه جشم سه رخ ",url="https://t.me/+HdHDLoerKTZlNjg8")],
-      [InlineKeyboardButton("دریافت کد هنرجویی",url="https://t.me/DadeCrimson")],
-      [InlineKeyboardButton("بازگشت",callback_data=str(BACK))]
+      [InlineKeyboardButton("دریافت کد هنرجویی",url="https://t.me/pintoreal")],
+      [InlineKeyboardButton("صفحه اصلی",callback_data=str(MAIN_HOME))],
     ]
   elif package == "bini":
     keyboard = [
       [InlineKeyboardButton("لینک گروه بینی تمام رخ ",url="https://t.me/+eGoKoKWLsSUwYmE8")],
-      [InlineKeyboardButton("دریافت کد هنرجویی",url="https://t.me/DadeCrimson")],
-      [InlineKeyboardButton("بازگشت",callback_data=str(BACK))]
+      [InlineKeyboardButton("دریافت کد هنرجویی",url="https://t.me/pintoreal")],
+      [InlineKeyboardButton("صفحه اصلی",callback_data=str(MAIN_HOME))],
     ]
   elif package == "bini_3rokh":
     keyboard = [
       [InlineKeyboardButton("لینک گروه بینی سه رخ ",url="https://t.me/+kYwuy2X4Y185NDFk")],
-      [InlineKeyboardButton("دریافت کد هنرجویی",url="https://t.me/DadeCrimson")],
-      [InlineKeyboardButton("بازگشت",callback_data=str(BACK))]
+      [InlineKeyboardButton("دریافت کد هنرجویی",url="https://t.me/pintoreal")],
+      [InlineKeyboardButton("صفحه اصلی",callback_data=str(MAIN_HOME))],
     ]
   elif package == "bini_pir":
     keyboard = [
       [InlineKeyboardButton("لینک گروه بینی پیر ",url="https://t.me/+SGH5EQkExaliZDY0")],
-      [InlineKeyboardButton("دریافت کد هنرجویی",url="https://t.me/DadeCrimson")],
-      [InlineKeyboardButton("بازگشت",callback_data=str(BACK))]
+      [InlineKeyboardButton("دریافت کد هنرجویی",url="https://t.me/pintoreal")],
+      [InlineKeyboardButton("صفحه اصلی",callback_data=str(MAIN_HOME))],
     ]
   elif package == "lab_asali":
     keyboard = [
       [InlineKeyboardButton("لینک گروه لب عسلی ",url="https://t.me/+UupKG9E-kME2OTNk")],
-      [InlineKeyboardButton("دریافت کد هنرجویی",url="https://t.me/DadeCrimson")],
-      [InlineKeyboardButton("بازگشت",callback_data=str(BACK))]
+      [InlineKeyboardButton("دریافت کد هنرجویی",url="https://t.me/pintoreal")],
+      [InlineKeyboardButton("صفحه اصلی",callback_data=str(MAIN_HOME))],
     ]
   elif package == "lab_almasi":
     keyboard = [
       [InlineKeyboardButton("لینک گروه لب الماسی ",url="https://t.me/+Ih5LQ93iofw0YjU0")],
-      [InlineKeyboardButton("دریافت کد هنرجویی",url="https://t.me/DadeCrimson")],
-      [InlineKeyboardButton("بازگشت",callback_data=str(BACK))]
+      [InlineKeyboardButton("دریافت کد هنرجویی",url="https://t.me/pintoreal")],
+      [InlineKeyboardButton("صفحه اصلی",callback_data=str(MAIN_HOME))],
     ]
   elif package == "lab":
     keyboard = [
       [InlineKeyboardButton("لینک گروه لب خندان ",url="https://t.me/+SSzHyF-XdYYxMWRk")],
-      [InlineKeyboardButton("دریافت کد هنرجویی",url="https://t.me/DadeCrimson")],
-      [InlineKeyboardButton("بازگشت",callback_data=str(BACK))]
+      [InlineKeyboardButton("دریافت کد هنرجویی",url="https://t.me/pintoreal")],
+      [InlineKeyboardButton("صفحه اصلی",callback_data=str(MAIN_HOME))],
     ]
   elif package == "starter":
     keyboard = [
       [InlineKeyboardButton("لینک گروه استارتر",url="https://t.me/+fcvSvAxfGYA5ODk0")],
-      [InlineKeyboardButton("دریافت کد هنرجویی",url="https://t.me/DadeCrimson")],
-      [InlineKeyboardButton("بازگشت",callback_data=str(BACK))]
+      [InlineKeyboardButton("دریافت کد هنرجویی",url="https://t.me/pintoreal")],
+      [InlineKeyboardButton("صفحه اصلی",callback_data=str(MAIN_HOME))],
     ]
   elif package == "pishrafte":
     keyboard = [
       [InlineKeyboardButton("لینک گروه پیشرفته ",url="https://t.me/+IwMGEazEyVdlNjQ0")],
-      [InlineKeyboardButton("دریافت کد هنرجویی",url="https://t.me/DadeCrimson")],
+      [InlineKeyboardButton("دریافت کد هنرجویی",url="https://t.me/pintoreal")],
       [InlineKeyboardButton("گروه رفع اشکال ", url="https://t.me/+K0YTQmJ7NhtmZDdk")],
-      [InlineKeyboardButton("بازگشت",callback_data=str(BACK))]
+      [InlineKeyboardButton("صفحه اصلی",callback_data=str(MAIN_HOME))],
+    ]
+  elif package == "جشنواره":
+    keyboard = [
+      [InlineKeyboardButton("لینک گروه استارتر ترم اول دوره صفر تا صد ",url="https://t.me/+YhaxpPztbBI4MzRk")],
+      [InlineKeyboardButton("لینک گروه ترم اول دوره صفر تا صد ",url="https://t.me/+1buEEob9ZMZiNGY0")],
+      [InlineKeyboardButton("لینک گروه ترم دوم دوره صفر تا صد ",url="https://t.me/+DMM_XeNZlxc1NzY0")],
+      [InlineKeyboardButton("لینک گروه ترم سوم دوره صفر تا صد ",url="https://t.me/+99h5iMpcQgc4ZjE0")],
+      [InlineKeyboardButton("گروه رفع اشکال دوره صفر تا صد ", url="https://t.me/+FPXzwiSZ3Zs1YmI0")],
+      [InlineKeyboardButton("لینک گروه تک چهره",url="https://t.me/+zNjvj8YebyQ5MjU0")],
+      [InlineKeyboardButton("گروه رفع اشکال تک چهره", url="https://t.me/+3xWChykCNLY1ZDk0")],
+      [InlineKeyboardButton("لینک گروه استارتر پکیج پوست",url="https://t.me/+fcvSvAxfGYA5ODk0")],
+      [InlineKeyboardButton("لینک گروه پیشرفته پکیج پوست ",url="https://t.me/+IwMGEazEyVdlNjQ0")],
+      [InlineKeyboardButton("گروه رفع اشکال پکیج پوست ", url="https://t.me/+K0YTQmJ7NhtmZDdk")],
+      [InlineKeyboardButton("دریافت کد هنرجویی",url="https://t.me/pintoreal")],
+      [InlineKeyboardButton("صفحه اصلی",callback_data=str(MAIN_HOME))],
+      
     ]
   elif package == "poost":
     keyboard = [
       [InlineKeyboardButton("لینک گروه استارتر",url="https://t.me/+fcvSvAxfGYA5ODk0")],
       [InlineKeyboardButton("لینک گروه پیشرفته ",url="https://t.me/+IwMGEazEyVdlNjQ0")],
-      [InlineKeyboardButton("دریافت کد هنرجویی",url="https://t.me/DadeCrimson")],
+      [InlineKeyboardButton("دریافت کد هنرجویی",url="https://t.me/pintoreal")],
       [InlineKeyboardButton("گروه رفع اشکال ", url="https://t.me/+K0YTQmJ7NhtmZDdk")],
-      [InlineKeyboardButton("بازگشت",callback_data=str(BACK))]
+      [InlineKeyboardButton("صفحه اصلی",callback_data=str(MAIN_HOME))],
     ]  
   else:
     keyboard = [
       [InlineKeyboardButton("لینک گروه ",url="")],
-      [InlineKeyboardButton("بازگشت",callback_data=str(BACK))]
+      [InlineKeyboardButton("صفحه اصلی",callback_data=str(MAIN_HOME))],
     ]
           
     
@@ -1679,11 +1794,20 @@ async def button_callback(update:Update,context:ContextTypes.DEFAULT_TYPE) -> st
 فیش واریزی شما توسط ادمین تایید شد و در پایین این پیام  لینک گروه ها قرار دارد.✨
 ❌برای دریافت کد هنرجویی خودتون از طریق دکمه کد هنرجویی به ادمین پیام بدید تا کد خودتون رو دریافت کنید.❌
 
-⚠️مواردی در مورد رفع اشکال:
-_رفع اشکال شما توسط ثمین و مریم انجام میشه 
-_رفع اشکال آموزش ما رایگانه و پولی بابتش دریافت نمیشه.
-_ممکنه که به علت حجم بالای پیام ها دیرتر کارتون رفع اشکال بشه به علت اینکه ما دو نفریم و رسیدگی به پیام ها طول میکشه.
-_کارهایی که جدا از آموزش برای خودتون انجام میدین رفع اشکال نمیشه. 
+🔥نکات مهم بعد از ثبت نام:
+_تمرینات هر ترم رو سعی کنید به ترتیب انجام بدید و ویدیو هارو کامل ببینید (سریع رد شدن و جلو زدن ویدئو باعث میشه کلی نکات مهم رو از دست بدین و تو کارتون مشخص میشه که اهمیتی به ویدئو توضیحات ندادین)‌.
+_ویدئو های حذف شده از چنل ترم اول تو چنل آپدیته.
+-لطفا حتما روی مقوا اشتنباخ کار کنید. 
+-کدهای مهم پلی کروم رو (که تو لیست نوشته شده)*حتما باید تهیه کنید .
+-رممکنه گاهی اوقات به علت حجم بالای پیام ها دیر تر کارتون رفع اشکال بشه
+-سوالاتتون رو حتما تو* گروه بپرسید چون پیوی چک نمیشه.
+-حتما کارتون رو تکمیل کنید بعد ارسال کنید .
+- ترم سوم در حال تکمیله و جلسات بیشتری به این  کانال اضافه میشه‌.
+-کارهایی که جدا برای خودتون انجام میدین رفع اشکال نمیشن چون اولویت با مدل های آموزشیه.
+_ این آموزش صرفا نمیتونه از شما نقاش بسازه تمرین و پشتکار خودتون هم لازمه.
+_حتما کد هنرجویی خودتون رو از ما دریافت کرده و نگهش دارین،در صورت پاک کردن اکانتتون میتونید پیام بدین و با ارسال این کد دوباره تو چنل ها و گروه اد بشین .
+_از فرستادن ویدئو ها به اشخاص دیگه و فروش اون ها به عنوان آموزش خودتون خودداری کنید،این موارد پیگیری میشه.
+
     '''
     await query.answer("خرید پذیرفته شد")
     await bot.send_message(chat_id=user_id,text=text,reply_markup=reply_markup)
@@ -1750,13 +1874,14 @@ async def about_us(update:Update , context:ContextTypes.DEFAULT_TYPE)-> str :
   query = update.callback_query
   await query.answer()
   await query.message.reply_text("FELAN HICHI")
-  return HOME
-  
+  return HOME  
  
   
 def main() -> None:
   
-  application = Application.builder().token(token).build() 
+  my_persistence = PicklePersistence(filepath="Persistence")
+  
+  application = Application.builder().token(token).persistence(persistence=my_persistence).build() 
    
   #  buy functions left
   sefr_ta_sad_package_conv = ConversationHandler(entry_points=[CallbackQueryHandler(sefr_ta_sad_home, pattern= "^" + str(SEFR_TA_SAD) + "$")],
@@ -1764,16 +1889,20 @@ def main() -> None:
                                                                          CallbackQueryHandler(term_2_home , pattern="^" + str(TERM_2) + "$"),
                                                                          CallbackQueryHandler(term_3_home , pattern="^" + str(TERM_3) + "$"),
                                                                          CallbackQueryHandler(buy_sefr_ta_sad , pattern="^" + str(BUY_SEFR_TA_SAD) + "$"),
+                                                                         CallbackQueryHandler(start_over,pattern="^" + str(MAIN_HOME) + "$"),
                                                                          CallbackQueryHandler(back_to_show_packages , pattern="^" + str(BACK) + "$")] ,
                                                             FORWARD_TO_ADMIN : [MessageHandler(filters=filters.PHOTO ,callback= forward_to_admin),
                                                                                 MessageHandler(filters=filters.TEXT,callback=code_takhfif),
+                                                                                CallbackQueryHandler(start_over,pattern="^" + str(MAIN_HOME) + "$"),
                                                                                 CallbackQueryHandler(sefr_ta_sad_home,pattern="^" +str(BACK) + "$"),
                                                                                 ],
                                                             TERM_1 : [CallbackQueryHandler(cheshm_3rokh,pattern="^"+str(CHESHM_3ROKH)+ "$"),
                                                                       CallbackQueryHandler(buy_term_1,pattern="BUY"),
+                                                                      CallbackQueryHandler(start_over,pattern="^" + str(MAIN_HOME) + "$"),
                                                                       CallbackQueryHandler(back_to_sefr_ta_sad,pattern="^"+str(BACK)+ "$")
                                                                       ],
                                                             CHESHM_3ROKH : [CallbackQueryHandler(buy_cheshm_3rokh,pattern= "^" + str(BUY_CHESHM_3ROKH) + "$"),
+                                                                          CallbackQueryHandler(start_over,pattern="^" + str(MAIN_HOME) + "$"),
                                                                           CallbackQueryHandler(back_to_term_1,pattern="^" + str(BACK) + "$")], 
                                                             TERM_2 : [CallbackQueryHandler(bini,pattern="^"+str(BINI)+ "$"),
                                                                       CallbackQueryHandler(lab,pattern="^"+str(LAB)+ "$"),
@@ -1782,24 +1911,32 @@ def main() -> None:
                                                                       CallbackQueryHandler(lab_almasi,pattern="^"+str(LAB_ALMASI)+ "$"),
                                                                       CallbackQueryHandler(lab_asali,pattern="^"+str(LAB_ASALI)+ "$"),
                                                                       CallbackQueryHandler(buy_term_2,pattern="^"+str(BUY_TERM2)+ "$"),
+                                                                      CallbackQueryHandler(start_over,pattern="^" + str(MAIN_HOME) + "$"),
                                                                       CallbackQueryHandler(back_to_sefr_ta_sad,pattern="^"+str(BACK)+ "$")
                                                                       ],
                                                             BINI : [CallbackQueryHandler(buy_bini,pattern= "^" + str(BUY_BINI) + "$"),
+                                                                          CallbackQueryHandler(start_over,pattern="^" + str(MAIN_HOME) + "$"),
                                                                           CallbackQueryHandler(back_to_term_2,pattern="^" + str(BACK) + "$")], 
                                                             BINI_3ROKH : [CallbackQueryHandler(buy_bini_3rokh,pattern= "^" + str(BUY_BINI_3ROKH) + "$"),
+                                                                          CallbackQueryHandler(start_over,pattern="^" + str(MAIN_HOME) + "$"),
                                                                           CallbackQueryHandler(back_to_term_2,pattern="^" + str(BACK) + "$")], 
                                                             BINI_PIR : [CallbackQueryHandler(buy_bini_pir,pattern= "^" + str(BUY_BINI_PIR) + "$"),
+                                                                          CallbackQueryHandler(start_over,pattern="^" + str(MAIN_HOME) + "$"),
                                                                           CallbackQueryHandler(back_to_term_2,pattern="^" + str(BACK) + "$")], 
                                                             
                                                             LAB_ASALI : [CallbackQueryHandler(buy_lab_asali,pattern= "^" + str(BUY_LAB_ASALI) + "$"),
+                                                                          CallbackQueryHandler(start_over,pattern="^" + str(MAIN_HOME) + "$"),
                                                                           CallbackQueryHandler(back_to_term_2,pattern="^" + str(BACK) + "$")],
                                                              
                                                             LAB_ALMASI : [CallbackQueryHandler(buy_lab_almasi,pattern= "^" + str(BUY_LAB_ALMASI) + "$"),
+                                                                          CallbackQueryHandler(start_over,pattern="^" + str(MAIN_HOME) + "$"),
                                                                           CallbackQueryHandler(back_to_term_2,pattern="^" + str(BACK) + "$")],
                                                              
                                                             LAB : [CallbackQueryHandler(buy_lab,pattern= "^" + str(BUY_LAB) + "$"),
+                                                                          CallbackQueryHandler(start_over,pattern="^" + str(MAIN_HOME) + "$"),
                                                                           CallbackQueryHandler(back_to_term_2,pattern="^" + str(BACK) + "$")],
                                                             TERM_3 : [CallbackQueryHandler(tonazh_moo_siah,pattern="^"+str(TONAZH_MOO_SIAH)+ "$"),
+                                                                      CallbackQueryHandler(start_over,pattern="^" + str(MAIN_HOME) + "$"),
                                                                       CallbackQueryHandler(tonazh_moo_ghahvei,pattern="^" + str(TONAZH_MOO_GHAHVEI) + "$"),
                                                                       CallbackQueryHandler(moo_taylor,pattern="^"+str(MOO_TAYLOR)+ "$"),
                                                                       CallbackQueryHandler(moo_shinion,pattern="^"+str(MOO_SHINION)+ "$"),
@@ -1808,23 +1945,29 @@ def main() -> None:
                                                                       CallbackQueryHandler(back_to_sefr_ta_sad,pattern="^"+str(BACK)+ "$")
                                                                       ],
                                                            TONAZH_MOO_SIAH : [CallbackQueryHandler(buy_tonazh_moo_siah,pattern= "^" + str(BUY_TONAZH_MOO_SIAH) + "$"),
+                                                                          CallbackQueryHandler(start_over,pattern="^" + str(MAIN_HOME) + "$"),
                                                                           CallbackQueryHandler(back_to_term_3,pattern="^" + str(BACK) + "$")], 
                                                            TONAZH_MOO_GHAHVEI : [CallbackQueryHandler(buy_tonazh_moo_ghahvei,pattern= "^" + str(BUY_TONAZH_MOO_GHAHVEI) + "$"),
+                                                                          CallbackQueryHandler(start_over,pattern="^" + str(MAIN_HOME) + "$"),
                                                                           CallbackQueryHandler(back_to_term_3,pattern="^" + str(BACK) + "$")], 
                                                            MOO_TAYLOR : [CallbackQueryHandler(buy_moo_taylor,pattern= "^" + str(BUY_MOO_TAYLOR) + "$"),
+                                                                          CallbackQueryHandler(start_over,pattern="^" + str(MAIN_HOME) + "$"),
                                                                           CallbackQueryHandler(back_to_term_3,pattern="^" + str(BACK) + "$")],
                                                            MOO_SHINION : [CallbackQueryHandler(buy_moo_shinion,pattern= "^" + str(BUY_MOO_SHINION) + "$"),
+                                                                          CallbackQueryHandler(start_over,pattern="^" + str(MAIN_HOME) + "$"),
                                                                           CallbackQueryHandler(back_to_term_3,pattern="^" + str(BACK) + "$")], 
                                                            MOO_PESAR : [CallbackQueryHandler(buy_moo_pesar,pattern= "^" + str(BUY_MOO_PESAR) + "$"),
+                                                                          CallbackQueryHandler(start_over,pattern="^" + str(MAIN_HOME) + "$"),
                                                                           CallbackQueryHandler(back_to_term_3,pattern="^" + str(BACK) + "$")], 
                                                            SHOW_LINKS : [CallbackQueryHandler(button_callback),
+                                                                          CallbackQueryHandler(start_over,pattern="^" + str(MAIN_HOME) + "$"),
                                                                          CallbackQueryHandler(sefr_ta_sad_home,pattern="^" + str(BACK) + "$")]
 
                                                   },
                                                   
                                                   map_to_parent={
                                                     
-                                                    STOP:STOP,
+                                                    HOME:HOME,
                                                     FORWARD_TO_ADMIN:FORWARD_TO_ADMIN,
                                                   },
                                                   fallbacks=[CommandHandler("start",start)],allow_reentry=True,
@@ -1835,6 +1978,7 @@ def main() -> None:
                                                  states={
                                                    SELECTION : [
                                                      CallbackQueryHandler(buy_tak_chehre,pattern="^" + str(BUY_TAK_CHEHRE) + "$"),
+                                                     CallbackQueryHandler(start_over,pattern="^" + str(MAIN_HOME) + "$"),
                                                      CallbackQueryHandler(back_to_show_packages,pattern="^" + str(BACK) + "$"),
                                                    ],
                                                    FORWARD_TO_ADMIN : [MessageHandler(filters=filters.PHOTO ,callback= forward_to_admin),
@@ -1842,14 +1986,16 @@ def main() -> None:
                                                                        CallbackQueryHandler(tak_chehre_home,pattern="^"+str(BACK) + "$")],
                                                    SHOW_LINKS : [
                                                      CallbackQueryHandler(button_callback),
+                                                     CallbackQueryHandler(start_over,pattern="^" + str(MAIN_HOME) + "$"),
                                                      CallbackQueryHandler(tak_chehre_home,pattern="^" + str(BACK) + "$")
                                                    ]
                                                     
                                                  },
                                                  fallbacks=[CommandHandler("start",start)],
                                                  map_to_parent={
-                                                   STOP : STOP,
-                                                   FORWARD_TO_ADMIN: FORWARD_TO_ADMIN
+                                                   FORWARD_TO_ADMIN: FORWARD_TO_ADMIN,
+                                                   HOME:HOME,
+
                                                  },
                                                 allow_reentry= True,
                                                  )
@@ -1859,6 +2005,7 @@ def main() -> None:
                                                  states={
                                                    SELECTION : [
                                                      CallbackQueryHandler(buy_zein,pattern="^" + str(BUY_ZEIN) + "$"),
+                                                     CallbackQueryHandler(start_over,pattern="^" + str(MAIN_HOME) + "$"),
                                                      CallbackQueryHandler(back_to_show_packages,pattern="^" + str(BACK) + "$"),
                                                    ],
                                                    FORWARD_TO_ADMIN : [MessageHandler(filters=filters.PHOTO ,callback= forward_to_admin),
@@ -1866,14 +2013,40 @@ def main() -> None:
                                                                        CallbackQueryHandler(zein_home,pattern="^"+str(BACK) + "$")],
                                                    SHOW_LINKS : [
                                                      CallbackQueryHandler(button_callback),
+                                                     CallbackQueryHandler(start_over,pattern="^" + str(MAIN_HOME) + "$"),
                                                      CallbackQueryHandler(zein_home,pattern="^" + str(BACK) + "$")
                                                    ]
                                                     
                                                  },
                                                  fallbacks=[CommandHandler("start",start)],
                                                  map_to_parent={
-                                                   STOP : STOP,
-                                                   FORWARD_TO_ADMIN: FORWARD_TO_ADMIN
+                                                   FORWARD_TO_ADMIN: FORWARD_TO_ADMIN,
+                                                   HOME:HOME,
+                                                 },
+                                                allow_reentry= True,
+                                                 )
+       
+  jashnvare_conv = ConversationHandler(entry_points=[CallbackQueryHandler(jashnvare_home,pattern="JASHNVARE")],
+                                                 states={
+                                                   SELECTION : [
+                                                     CallbackQueryHandler(buy_jashnvare,pattern="BUY_J"),
+                                                     CallbackQueryHandler(start_over,pattern="^" + str(MAIN_HOME) + "$"),
+                                                     CallbackQueryHandler(back_to_show_packages,pattern="^" + str(BACK) + "$"),
+                                                   ],
+                                                   FORWARD_TO_ADMIN : [MessageHandler(filters=filters.PHOTO ,callback= forward_to_admin),
+                                                                       MessageHandler(filters=filters.TEXT,callback=code_takhfif),
+                                                                       CallbackQueryHandler(jashnvare_home,pattern="^"+str(BACK) + "$")],
+                                                   SHOW_LINKS : [
+                                                     CallbackQueryHandler(button_callback),
+                                                     CallbackQueryHandler(start_over,pattern="^" + str(MAIN_HOME) + "$"),
+                                                     CallbackQueryHandler(zein_home,pattern="^" + str(BACK) + "$")
+                                                   ]
+                                                    
+                                                 },
+                                                 fallbacks=[CommandHandler("start",start)],
+                                                 map_to_parent={
+                                                   FORWARD_TO_ADMIN: FORWARD_TO_ADMIN,
+                                                   HOME:HOME,
                                                  },
                                                 allow_reentry= True,
                                                  )
@@ -1886,16 +2059,20 @@ def main() -> None:
                                                      CallbackQueryHandler(starter_home,pattern="^" + str(STARTER) + "$"),
                                                      CallbackQueryHandler(pishrafte_home,pattern="^" + str(PISHRAFTE) + "$"),
                                                      CallbackQueryHandler(back_to_show_packages,pattern="^" + str(BACK) + "$"),
+                                                     CallbackQueryHandler(start_over,pattern="^" + str(MAIN_HOME) + "$"),
                                                      CallbackQueryHandler(buy_poost,pattern="^" + str(BUY_POOST) + "$")
                                                    ],
                                               STARTER:[CallbackQueryHandler(buy_starter,pattern= "^" + str(BUY_STARTER) + "$"),
+                                                       CallbackQueryHandler(start_over,pattern="^" + str(MAIN_HOME) + "$"),
                                                        CallbackQueryHandler(back_to_poost_package,pattern= "^" + str(BACK) + "$")],
                                               PISHRAFTE:[CallbackQueryHandler(buy_pishrafte,pattern= "^" + str(BUY_PISHRAFTE) + "$"),
+                                                       CallbackQueryHandler(start_over,pattern="^" + str(MAIN_HOME) + "$"),
                                                        CallbackQueryHandler(back_to_poost_package,pattern= "^" + str(BACK) + "$")],
                                               FORWARD_TO_ADMIN : [MessageHandler(filters=filters.PHOTO ,callback= forward_to_admin),
                                                                        MessageHandler(filters=filters.TEXT,callback=code_takhfif),
                                                                        CallbackQueryHandler(poost_package_home,pattern="^"+str(BACK) + "$")],
                                               SHOW_LINKS : [CallbackQueryHandler(button_callback),
+                                                            CallbackQueryHandler(start_over,pattern="^" + str(MAIN_HOME) + "$"),
                                                             CallbackQueryHandler(poost_package_home,pattern="^" + str(BACK) + "$")],
                                               
                                             },
@@ -1903,30 +2080,35 @@ def main() -> None:
                                             allow_reentry= True,
                                             map_to_parent={
                                               FORWARD_TO_ADMIN:FORWARD_TO_ADMIN,
-                                              STOP : STOP
+                                              HOME:HOME,
                                             },
                                             )
    
   
   main_conv = ConversationHandler(
-     entry_points= [CommandHandler("start",start),poost_package_conv,tak_chehre_package_conv,sefr_ta_sad_package_conv],
+     entry_points= [CommandHandler("start",start),poost_package_conv,tak_chehre_package_conv,sefr_ta_sad_package_conv,jashnvare_conv,
+                    CallbackQueryHandler(start_over,pattern="^" + str(MAIN_HOME) + "$" )],
      states= {HOME: [CallbackQueryHandler(show_packages , pattern="^" + str(SHOW_PACKAGES) + "$"),
                      CallbackQueryHandler(about_us,pattern="^"+ str(ABOUT_US) + "$"),
+                     CallbackQueryHandler(start_over,pattern="^" + str(MAIN_HOME) + "$"),
+                     jashnvare_conv,
                      CallbackQueryHandler(END,pattern="^" + str(END) + "$")
                      ],
               SELECT_PACKAGE : [
                 poost_package_conv,
+                jashnvare_conv,
                 tak_chehre_package_conv,
                 sefr_ta_sad_package_conv,
                 zein_package_conv,
-                CallbackQueryHandler(start_over,pattern="^" + str(BACK) + "$")
+                CallbackQueryHandler(start_over,pattern="^" + str(MAIN_HOME) + "$"),
+                CallbackQueryHandler(start_over,pattern="^" + str(HOME) + "$")
               ],
               FORWARD_TO_ADMIN : [MessageHandler(filters=filters.PHOTO ,callback= forward_to_admin),
                                   MessageHandler(filters=filters.TEXT,callback=code_takhfif),
                                   CallbackQueryHandler(show_packages,pattern="^"+str(BACK) + "$")],
-              STOP : [CommandHandler("start",start)],
               SHOW_LINKS : [
                 CallbackQueryHandler(button_callback),
+                CallbackQueryHandler(start_over,pattern="^" + str(MAIN_HOME) + "$"),
                 CallbackQueryHandler(show_packages,pattern="^" + str(BACK) + "$")
               ],
               
