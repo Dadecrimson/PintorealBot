@@ -1735,6 +1735,12 @@ async def button_callback(update:Update,context:ContextTypes.DEFAULT_TYPE) -> st
       [InlineKeyboardButton("دریافت کد هنرجویی",url="https://t.me/pintoreal")],
       [InlineKeyboardButton("صفحه اصلی",callback_data=str(MAIN_HOME))],
     ]
+  elif package == "moo_ghahvei":
+    keyboard = [
+      [InlineKeyboardButton("لینک گروه مو قهوه ای ",url="https://t.me/+CiMWkZo6rjM4OTc0")],
+      [InlineKeyboardButton("دریافت کد هنرجویی",url="https://t.me/pintoreal")],
+      [InlineKeyboardButton("صفحه اصلی",callback_data=str(MAIN_HOME))],
+    ]
   elif package == "lab":
     keyboard = [
       [InlineKeyboardButton("لینک گروه لب خندان ",url="https://t.me/+SSzHyF-XdYYxMWRk")],
